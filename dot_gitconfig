@@ -4,5 +4,10 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = Raoul Hochreuter
+	name = Roehl
 	email = Roehl05@protonmail.com
+[core]
+	editor = micro
+	autocrlf = input
+[init]
+	defaultBranch = main
