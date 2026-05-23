@@ -16,4 +16,41 @@ alias amusic="brave --app=https://music.apple.com"
 # Automatically route all Steam game launches through your local Gamescope wrapper
 set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/steam-gamescope-wrapper"
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-set -gx EDITOR micro
+
+
+
+# 2. Modern replacements for the classic 'ls' tool using eza
+if command -v eza > /dev/null
+    function ls --description "Alias for eza"
+        eza --icons --grid --group-directories-first $argv
+    end
+
+    function ll --description "Detailed list format with git metrics"
+        eza --icons --long --header --git --group-directories-first $argv
+    end
+
+    function la --description "Detailed list including hidden files"
+        eza --icons --long --header --all --git --group-directories-first $argv
+    end
+
+    function tree --description "Visual folder architecture breakdown"
+        eza --icons --tree --level=3 --group-directories-first $argv
+    end
+end
+
+# 3. 'bat' overrides for 'cat'
+if command -v bat > /dev/null
+    function cat --description "Alias for bat"
+        bat --paging=never $argv
+    end
+end
+
+# 4. 'zoxide' initializing (replaces 'cd' natively)
+if command -v zoxide > /dev/null
+    zoxide init fish | source
+end
+
+# 5. Quick btop shortcut
+if command -v btop > /dev/null
+    alias top="btop"
+end
