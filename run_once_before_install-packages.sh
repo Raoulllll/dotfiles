@@ -24,6 +24,6 @@ fi
 
 # 4. Enforce that your absolute favorites are present no matter what
 echo "Ensuring core utilities..."
-sudo pacman -S --needed --noconfirm fastfetch micro ghostty brave-browser-nightly eza bat zoxide ripgrep fd btop
-
+# Update the bottom line loop to add the -bin suffix to brave nightly
+sudo pacman -S --needed --noconfirm fastfetch micro ghostty brave-browser-nightly-bin eza bat zoxide ripgrep fd btop
 echo "=== Installation Sync Complete ==="
