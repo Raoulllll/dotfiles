@@ -54,3 +54,7 @@ end
 if command -v btop > /dev/null
     alias top="btop"
 end
+
+
+# Memorable shortcut to back up all system dotfiles to GitHub
+alias backup="~/.local/bin/cz-sync.sh"
