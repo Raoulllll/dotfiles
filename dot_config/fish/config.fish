@@ -58,3 +58,9 @@ end
 
 # Memorable shortcut to back up all system dotfiles to GitHub
 alias backup="~/.local/bin/cz-sync.sh"
+
+
+function fish_user_key_bindings
+    # Bind Ctrl+L to clear screen and instantly execute fastfetch
+    bind \cl 'clear; fastfetch; commandline -f repaint'
+end
