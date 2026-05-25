@@ -1,72 +1,98 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
-"modules": [
+  "logo": {
+    "source": "~/.config/fastfetch/my_art.txt",
+    "color": {
+      "1": "cyan",
+      "2": "magenta"
+    }
+  },
+  "display": {
+    "separator": " ➜  ",
+    "key": {
+        "width": 30
+    }
+  },
+  "modules": [
     "title",
     "separator",
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-{
+    { "type": "os", "key": "{#cyan}󰣇 OS" },
+    { "type": "kernel", "key": "{#cyan}⚙️ Kernel" },
+    { "type": "uptime", "key": "{#cyan}󱎫 Uptime" },
+    {
         "type": "packages",
+        "key": "{#cyan}󰏖 Packages",
         "brew": true,
         "flatpak": true,
-        "nix": true,
-        "snap": true
+        "nix": true
     },
-    {
-        "type": "command",
-        "key": "Packages (cargo)",
-        "text": "ls -1 $HOME/.cargo/bin 2>/dev/null | wc -l"
-    },
-    {
-        "type": "command",
-        "key": "Packages (npm)",
-        "text": "ls -1 $HOME/.npm-global/bin 2>/dev/null | wc -l"
-    },
-    {
-        "type": "command",
-        "key": "Packages (go)",
-        "text": "ls -1 $HOME/go/bin 2>/dev/null | wc -l"
-    },
-    {
-        "type": "command",
-        "key": "Packages (gem)",
-        "text": "ls -1 $HOME/.local/share/gem/ruby/*/bin 2>/dev/null | wc -l"
-    },
-    {
-        "type": "command",
-        "key": "Containers",
-        "text": "cat $HOME/.cache/distrobox-pkg-counts 2>/dev/null || echo 'No cache yet'"
-    },
-    "shell",
-    "display",
-    "de",
-    "wm",
-    "wmtheme",
-    "theme",
-    "icons",
-    "font",
-    "cursor",
-    "terminal",
-    "terminalfont",
-    "cpu",
-    "gpu",
-    "memory",
-    "swap",
-    "disk",
-    "localip",
-    "battery",
-    "poweradapter",
-    "locale",
+    "break",
 
     {
-            "type": "disk",
-            "key": "OS Age",
-            "folders": "/",
-            "format": "{days} days"
-        },
+        "type": "command",
+        "key": "{#magenta}󰡨 Containers",
+        "text": "wc -l < $HOME/.cache/distrobox-pkg-counts 2>/dev/null || echo '0'"
+    },
+    {
+        "type": "command",
+        "key": " {#magenta}├── alpine-box (apk)",
+        "text": "grep 'alpine-box' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
+    },
+    {
+        "type": "command",
+        "key": " {#magenta}├── davincibox (rpm)",
+        "text": "grep 'davincibox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
+    },
+    {
+        "type": "command",
+        "key": " {#magenta}├── Ubuntu-24.04 (dpkg)",
+        "text": "grep 'Ubuntu-24.04' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
+    },
+    {
+        "type": "command",
+        "key": " {#magenta}├── arch-sandbox (pacman)",
+        "text": "grep 'arch-sandbox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
+    },
+    {
+        "type": "command",
+        "key": " {#magenta}└── debian-sid (dpkg)",
+        "text": "grep 'debian-sid' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
+    },
     "break",
-    "colors"
+
+    { "type": "shell", "key": "{#yellow} Shell" },
+    { "type": "de", "key": "{#yellow} Environment" },
+    { "type": "terminal", "key": "{#yellow} Terminal" },
+    "break",
+
+    { "type": "cpu", "key": "{#blue} CPU" },
+    { "type": "gpu", "key": "{#blue}󰢮 GPU" },
+    { "type": "memory", "key": "{#blue} Memory" },
+    {
+        "type": "physicalmemory",
+        "key": "{#blue}󰓅 RAM Specs"
+    },
+    { "type": "disk", "key": "{#blue}󰋊 Storage" },
+    "break",
+
+    {
+        "type": "media",
+        "key": "{#green}󰝚 Now Playing",
+        "format": "{1} - {3} ({5})"
+    },
+    "break",
+
+    {
+        "type": "disk",
+        "key": "{#dim_white}󰔚 OS Age",
+        "folders": "/",
+        "format": "{days} days"
+    },
+    "break",
+    {
+            "type": "colors",
+            "key": " Palette",
+            "symbol": "circle"
+        }
   ]
 }
