@@ -89,10 +89,10 @@
         "format": "{days} days"
     },
     "break",
-    {
-            "type": "colors",
-            "key": " Palette",
-            "symbol": "circle"
-        }
+{
+        "type": "colors",
+        "key": " Palette",
+        "symbol": "circle"
+    }
   ]
 }
