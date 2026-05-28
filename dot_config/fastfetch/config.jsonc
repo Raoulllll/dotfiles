@@ -16,80 +16,134 @@
   "modules": [
     "title",
     "separator",
-    { "type": "os", "key": "{#cyan}󰣇 OS" },
-    { "type": "kernel", "key": "{#cyan}⚙️ Kernel" },
-    { "type": "uptime", "key": "{#cyan}󱎫 Uptime" },
+    "break",
+
+    // ────────────────────── Software System ──────────────────────
+    {
+      "type": "custom",
+      "format": "\u001b[94m┌──────────────────────System────────────────────────┐"
+    },
+    { "type": "os", "key": "│ {#cyan}󰣇 OS" },
+    { "type": "kernel", "key": "│ ├⚙️ Kernel" },
+    { "type": "uptime", "key": "│ ├󱎫 Uptime" },
     {
         "type": "packages",
-        "key": "{#cyan}󰏖 Packages",
+        "key": "│ └󰏖 Packages",
         "brew": true,
         "flatpak": true,
         "nix": true
     },
+    {
+      "type": "custom",
+      "format": "\u001b[94m└────────────────────────────────────────────────────┘"
+    },
     "break",
 
+    // ────────────────────── Containers ──────────────────────
+    {
+      "type": "custom",
+      "format": "\u001b[94m┌────────────────────Containers──────────────────────┐"
+    },
     {
         "type": "command",
-        "key": "{#magenta}󰡨 Containers",
+        "key": "│ {#magenta}󰡨 Distrobox",
         "text": "wc -l < $HOME/.cache/distrobox-pkg-counts 2>/dev/null || echo '0'"
     },
     {
         "type": "command",
-        "key": " {#magenta}├── alpine-box (apk)",
+        "key": "│ ├── alpine-box (apk)",
         "text": "grep 'alpine-box' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
     },
     {
         "type": "command",
-        "key": " {#magenta}├── davincibox (rpm)",
+        "key": "│ ├── davincibox (rpm)",
         "text": "grep 'davincibox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
     },
     {
         "type": "command",
-        "key": " {#magenta}├── Ubuntu-24.04 (dpkg)",
+        "key": "│ ├── Ubuntu-24.04 (dpkg)",
         "text": "grep 'Ubuntu-24.04' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
     },
     {
         "type": "command",
-        "key": " {#magenta}├── arch-sandbox (pacman)",
+        "key": "│ ├── arch-sandbox (pacman)",
         "text": "grep 'arch-sandbox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
     },
     {
         "type": "command",
-        "key": " {#magenta}└── debian-sid (dpkg)",
+        "key": "│ └── debian-sid (dpkg)",
         "text": "grep 'debian-sid' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'"
     },
-    "break",
-
-    { "type": "shell", "key": "{#yellow} Shell" },
-    { "type": "de", "key": "{#yellow} Environment" },
-    { "type": "terminal", "key": "{#yellow} Terminal" },
-    "break",
-
-    { "type": "cpu", "key": "{#blue} CPU" },
-    { "type": "gpu", "key": "{#blue}󰢮 GPU" },
-    { "type": "memory", "key": "{#blue} Memory" },
     {
-        "type": "physicalmemory",
-        "key": "{#blue}󰓅 RAM Specs"
+      "type": "custom",
+      "format": "\u001b[94m└────────────────────────────────────────────────────┘"
     },
-    { "type": "disk", "key": "{#blue}󰋊 Storage" },
     "break",
 
+    // ────────────────────── Environment ──────────────────────
+    {
+      "type": "custom",
+      "format": "\u001b[94m┌───────────────────Environment──────────────────────┐"
+    },
+    { "type": "shell", "key": "│ {#yellow} Shell" },
+    { "type": "de", "key": "│ ├ DE/WM" },
+    { "type": "terminal", "key": "│ └ Terminal" },
+    {
+      "type": "custom",
+      "format": "\u001b[94m└────────────────────────────────────────────────────┘"
+    },
+    "break",
+
+   // ────────────────────── Hardware Specs ──────────────────────
+//    {
+//    "type": "custom",
+//      "format": "\u001b[94m┌──────────────────────Hardware──────────────────────┐"
+//    },
+//    { "type": "cpu", "key": "│ {#blue} CPU" },
+//    { "type": "gpu", "key": "│ ├󰢮 GPU" },
+//    { "type": "memory", "key": "│ ├ Memory" },
+//    { "type": "physicalmemory", "key": "│ ├󰓅 RAM Specs" },
+//    { "type": "disk", "key": "│ └󰋊 Storage" },
+//    {
+//      "type": "custom",
+//      "format": "\u001b[94m└────────────────────────────────────────────────────┘"
+//    },
+//    "break",
+
+    // ────────────────────── Media Status ──────────────────────
+    {
+      "type": "custom",
+      "format": "\u001b[94m┌───────────────────────Media────────────────────────┐"
+    },
     {
         "type": "media",
-        "key": "{#green}󰝚 Now Playing",
+        "key": "│ {#green}󰝚 Now Playing",
         "format": "{1} - {3} ({5})"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[94m└────────────────────────────────────────────────────┘"
     },
     "break",
 
+    // ────────────────────── OS Lifespan ──────────────────────
+    {
+      "type": "custom",
+      "format": "\u001b[94m┌─────────────────────Statistics─────────────────────┐"
+    },
     {
         "type": "disk",
-        "key": "{#dim_white}󰔚 OS Age",
+        "key": "│ {#cyan}󰔚 OS Age",
         "folders": "/",
         "format": "{days} days"
     },
+    {
+      "type": "custom",
+      "format": "\u001b[94m└────────────────────────────────────────────────────┘"
+    },
     "break",
-{
+
+    {
         "type": "colors",
         "key": " Palette",
         "symbol": "circle"

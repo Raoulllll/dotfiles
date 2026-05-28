@@ -300,5 +300,9 @@ _launch=Launch (5)
 [services][net.local.ydotool-2.desktop]
 _launch=Tools
 
+[services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=
+OpenWithoutScreenshot=
+
 [services][systemsettings.desktop]
 _launch=Meta+I
