@@ -273,6 +273,7 @@ sudo
 sysfsutils
 terminus-font
 texinfo
+tk
 topgrade
 ttf-bitstream-vera
 ttf-dejavu
