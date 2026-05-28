@@ -1,4 +1,4 @@
-# 󰣇 roehl's Dotfiles
+#Roehl's Dotfiles
 
 My personal dotfiles managed with `chezmoi`.
 
