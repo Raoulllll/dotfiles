@@ -98,6 +98,7 @@ fwupd
 gamemode
 ghostty
 git
+github-cli
 glances
 gnome-boxes
 gnome-keyring
