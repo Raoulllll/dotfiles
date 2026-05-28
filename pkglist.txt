@@ -61,6 +61,7 @@ char-white
 chezmoi
 chwd
 cliphist
+cowsay
 cpupower
 cryptsetup
 cups
