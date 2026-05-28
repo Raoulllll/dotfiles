@@ -1,6 +1,6 @@
 # 󰣇 roehl's Dotfiles
 
-My personal dotfiles managed with `chezmoi`. Optimized for high-end AMD hardware, grand strategy simulation gaming, and a highly efficient, borderless development environment on modern Linux Wayland.
+My personal dotfiles managed with `chezmoi`.
 
 ## 💻 System Overview
 
@@ -8,9 +8,9 @@ My personal dotfiles managed with `chezmoi`. Optimized for high-end AMD hardware
 | :--- | :--- |
 | **OS** | CachyOS (Arch-based, optimized x86-64-v4) |
 | **DE/WM** | KDE Plasma (Wayland Session) |
-| **Terminal** | Kitty (Borderless, Translucent, Blurred) |
+| **Terminal** | Kitty / Ghossty (Borderless, Translucent, Blurred) |
 | **Shell** | Fish Shell + Starship Prompt |
-| **Editor** | Micro (Transparent syntax fallback) |
+| **Editor** | Micro |
 
 ---
 
@@ -20,10 +20,7 @@ My personal dotfiles managed with `chezmoi`. Optimized for high-end AMD hardware
 Includes a clean Python-based utility (`autoclicker.py`) utilizing `ydotool` to inject raw hardware events directly via the kernel (`/dev/uinput`). Fully integrated into KDE Global Shortcuts for single-hotkey starting and stopping at a rock-solid **20 CPS**.
 
 ### 2. 📦 Distrobox & Container Tracking
-Custom `fastfetch` setup that cleanly parses active Distrobox container counts and package densities using structured box-drawing borders (`┌───┐`, `├───┤`).
-
-### 3. 🎮 Gaming Optimization
-Includes automated `gamescope` wrapper scripts automatically mapped via `STEAM_COMPAT_INVOKER` to isolate and optimize environment parameters cleanly.
+Custom `fastfetch` setup that cleanly parses active Distrobox container counts.
 
 ---
 
