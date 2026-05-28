@@ -64,4 +64,3 @@ function fish_user_key_bindings
     bind \cl 'fetch-layout; commandline -f repaint'
 end
 alias test_sync='echo hello'
-tarship init fish | source
