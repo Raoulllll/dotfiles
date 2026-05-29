@@ -107,6 +107,7 @@
     # Terminal & CLI Tools
     git gh chezmoi micro ghostty fastfetch starship btop yazi ripgrep
     atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp
+    eza bat zoxide fd
     
     # Core Applications
     # brave # -> Uncomment on primary deployment
