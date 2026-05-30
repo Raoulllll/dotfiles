@@ -64,3 +64,11 @@ function fish_user_key_bindings
 end
 # Add this to your ~/.config/fish/config.fish
 fish_add_path -m ~/.local/bin
+function track
+    if test (count $argv) -eq 0
+        echo "Usage: track <file_or_directory>"
+    else
+        chezmoi add $argv
+        echo "Tracked: $argv"
+    end
+end
