@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, lib,... }: {
   imports = [ ./hardware-configuration.nix ];
 
   ### --- BOOT & KERNEL ---
@@ -29,7 +29,7 @@
 
   ### --- DESKTOP ENVIRONMENT ---
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
+ 
   security.pam.services.sddm.enableKwallet = true;
 
   ### --- ENVIRONMENT, XDG & FILESYSTEMS ---
@@ -57,7 +57,17 @@
   services.samba.enable = true;
   services.input-remapper.enable = true;
   services.pipewire = { enable = true; alsa.enable = true; pulse.enable = true; };
-  
+  services.displayManager.sddm = {
+      enable = true;
+      theme = "sddm-astronaut-theme";
+      package = lib.mkForce pkgs.kdePackages.sddm;
+      extraPackages = [
+        pkgs.qt6.qtsvg
+        pkgs.qt6.qtdeclarative
+        pkgs.qt6.qtmultimedia # Add this to resolve the missing dependency
+      ];
+    };
+ 
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
     enable = true;
@@ -97,6 +107,7 @@
   home-manager.users.roehl = { lib, ... }: {
     home.stateVersion = "24.05";
     home.enableNixpkgsReleaseCheck = false;
+    xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
     programs.plasma = {
       enable = true;
       shortcuts = {
@@ -121,6 +132,11 @@
     mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
      input-remapper spotify
      spicetify-cli nh
+     (pkgs.runCommand "sddm-theme-astronaut" {} ''
+         mkdir -p $out/share/sddm/themes/sddm-astronaut-theme
+         cp -r ${inputs.sddm-astronaut}/* $out/share/sddm/themes/sddm-astronaut-theme/
+       '')
+     
   ];
 
   system.stateVersion = "24.05";

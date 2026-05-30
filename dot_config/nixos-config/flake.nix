@@ -5,8 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    sddm-astronaut.url = "github:keyitdev/sddm-astronaut-theme";
+    sddm-astronaut.flake = false; # This is just a collection of assets, not a Nix flake;
     plasma-manager = {
         url = "github:nix-community/plasma-manager";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -29,13 +32,15 @@
         
         # Home Manager Module
         home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.roehl = {
-            imports = [ plasma-manager.homeModules.plasma-manager ];
-          };
-        }
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = { inherit inputs; };
+                  home-manager.users.roehl = {
+                    imports = [ plasma-manager.homeModules.plasma-manager ];
+                    # CORRECT LOCATION:
+                    
+                  };
+                }
 
         # Kernel and Cache module block
         {

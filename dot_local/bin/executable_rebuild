@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-# Assuming your config is in ~/.config/nixos-config
-cd ~/.config/nixos-config && sudo nixos-rebuild switch --flake .#desktop
+nh os switch ~/.config/nixos-config#desktop "$@"

@@ -1,5 +1,24 @@
-[PlasmaViews][Panel 4]
+[PlasmaViews][Panel 26]
 floating=1
+
+[PlasmaViews][Panel 26][Defaults]
+thickness=27
+
+[PlasmaViews][Panel 28]
+alignment=2
+floating=0
+panelLengthMode=1
+panelOpacity=2
+panelVisibility=2
+
+[PlasmaViews][Panel 28][Defaults]
+thickness=36
+
+[PlasmaViews][Panel 4]
+floating=0
+panelLengthMode=1
+panelOpacity=2
+panelVisibility=2
 
 [PlasmaViews][Panel 4][Defaults]
 maxLength=3360
