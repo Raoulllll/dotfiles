@@ -83,3 +83,12 @@ end
 function nano
     micro $argv
 end
+# Use 'abbr' for commands that expand as you type
+abbr -a ncfg 'cd ~/.config/nixos-config'
+abbr -a scripts 'cd ~/scripts'
+abbr -a vault 'cd ~/Vault'
+abbr -a big 'cd /mnt/BIG'
+abbr -a mfish 'micro ~/.config/fish/config.fish '
+
+# If you ever need to go back to your home dir
+abbr -a home 'cd ~'
