@@ -72,6 +72,7 @@ abbr -a ncfg 'cd ~/.config/nixos-config'
 abbr -a scripts 'cd ~/scripts'
 abbr -a vault 'cd ~/Vault'
 abbr -a big 'cd /mnt/BIG'
+abbr -a root 'cd /'
 
 # Directory Shortcuts
 abbr -a ..   'cd ..'
