@@ -43,9 +43,26 @@
     "x-scheme-handler/http" = "brave-browser.desktop";
     "text/plain" = "micro.desktop";
   };
-  fileSystems."/home/roehl/Vault" = { device = "/dev/disk/by-uuid/95aba3f0-430f-4c68-b976-913409565258"; fsType = "ext4"; options = [ "users" "nofail" "noatime" ]; };
-  fileSystems."/mnt/BIG" = { device = "/dev/disk/by-uuid/445515f0-70a3-4cee-a4af-54aa663eddef"; fsType = "btrfs"; options = [ "users" "nofail" "noatime" "compress=zstd" ]; };
-
+  # Your existing Vault storage
+    fileSystems."/home/roehl/Vault" = { 
+      device = "/dev/disk/by-uuid/95aba3f0-430f-4c68-b976-913409565258"; 
+      fsType = "ext4"; 
+      options = [ "users" "nofail" "noatime" ]; 
+    };
+  
+    # Your existing BIG storage (Optimized with Btrfs compression)
+    fileSystems."/home/roehl/BIG" = { 
+      device = "/dev/disk/by-uuid/445515f0-70a3-4cee-a4af-54aa663eddef"; 
+      fsType = "btrfs"; 
+      options = [ "users" "nofail" "noatime" "compress=zstd" ]; 
+    };
+  
+    # Your newly added CachyOS storage
+    fileSystems."/mnt/cachyos" = { 
+      device = "/dev/disk/by-uuid/b98daef4-8e1d-4a3f-8c5d-225261bf2a99"; 
+      fsType = "ext4"; 
+      options = [ "users" "nofail" "noatime" "x-systemd.automount" ]; 
+    };
   ### --- NIX SETTINGS & PACKAGES ---
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -130,7 +147,7 @@
     git gh chezmoi micro ghostty kitty fastfetch starship btop yazi ripgrep atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp eza bat zoxide fd fzf jq wl-clipboard
     brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
     mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
-     input-remapper spotify
+     input-remapper spotify kdePackages.partitionmanager
      spicetify-cli nh
      (pkgs.runCommand "sddm-theme-astronaut" {} ''
          mkdir -p $out/share/sddm/themes/sddm-astronaut-theme
