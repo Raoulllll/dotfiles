@@ -75,3 +75,7 @@ function track
         end
     end
 end
+
+function sfish
+    source ~/.config/fish/config.fish
+end
