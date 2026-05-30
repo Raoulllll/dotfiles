@@ -5,6 +5,7 @@
 #function fish_greeting
 #    # smth smth
 #end
+set -g fish_greeting
 starship init fish | source
 # Force Steam compatibility layers to automatically pass through your gamescope container
 set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/game-wrapper"
@@ -17,7 +18,7 @@ alias amusic="brave --app=https://music.apple.com"
 set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/steam-gamescope-wrapper"
 
 
-
+fastfetch
 # 2. Modern replacements for the classic 'ls' tool using eza
 if command -v eza > /dev/null
     function ls --description "Alias for eza"
