@@ -62,3 +62,5 @@ alias backup="~/.local/bin/cz-sync.sh"
 function fish_user_key_bindings
     bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
 end
+# Add this to your ~/.config/fish/config.fish
+fish_add_path -m ~/.local/bin
