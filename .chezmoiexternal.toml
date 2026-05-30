@@ -3,4 +3,9 @@
     url = "https://github.com/orangci/walls-catppuccin-mocha/archive/master.tar.gz"
     exact = true
     stripComponents = 1
-    refreshPeriod = "168h"
+
+[".config/wallpapers/nord"]
+    type = "archive"
+    url = "https://github.com/some-user/nord-wallpapers/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
