@@ -1,4 +1,3 @@
-```markdown
 # ❄️ Dotfiles & NixOS Configuration
 
 A fully declarative, reproducible system configuration and dotfiles management system. This repository combines the power of **NixOS Flakes** for system-level infrastructure with **Chezmoi** for flexible, cross-platform user environment personalization.
@@ -78,7 +77,3 @@ chezmoi apply
 * **Navigation & Search:** `zoxide`, `fzf`
 * **File Listing:** `eza` (aliased to `ls`)
 * **Cat Alternative:** `bat`
-
-```
-
-```
