@@ -1,6 +1,6 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
+#source /usr/share/cachyos-fish-config/cachyos-config.fish
 
-# overwrite greeting
+#overwrite greeting
 # potentially disabling fastfetch
 #function fish_greeting
 #    # smth smth
@@ -15,7 +15,6 @@ set -gx TOKEN "0.Al5idZKPpNz5mb+OFh+ho5/9zunUKrG7lSNeAN8CQ9tPwjy/2VYGbDcnZVYMdf8
 alias amusic="brave --app=https://music.apple.com"
 # Automatically route all Steam game launches through your local Gamescope wrapper
 set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/steam-gamescope-wrapper"
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 
 
@@ -59,8 +58,6 @@ end
 # Memorable shortcut to back up all system dotfiles to GitHub
 alias backup="~/.local/bin/cz-sync.sh"
 
-
 function fish_user_key_bindings
-    bind \cl 'fetch-layout; commandline -f repaint'
+    bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
 end
-alias test_sync='echo hello'
