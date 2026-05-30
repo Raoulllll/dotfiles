@@ -111,7 +111,7 @@
     
  
  ###  --- VIRTUALIZATION ---
-  virtualisation = { docker.enable = true; podman.enable = true; waydroid.enable = true; libvirtd.enable = true; };
+  virtualisation = { docker.enable = true; podman.enable = true; libvirtd.enable = true; };
 
   ### --- USER CONFIGURATION ---
   users.users.roehl = {
