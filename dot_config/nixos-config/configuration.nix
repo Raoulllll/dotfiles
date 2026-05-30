@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
-  # Systemd Bootloader Infrastructure
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
@@ -53,6 +52,8 @@
   services.flatpak.enable = true;
   services.hardware.openrgb.enable = true;
   services.samba.enable = true;
+  services.input-remapper.enable = true;
+  
   programs.fish.enable = true;
   programs.steam.enable = true;
   programs.gamemode.enable = true;
@@ -72,13 +73,32 @@
 
   users.users.roehl = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "docker" "libvirtd" "kvm" "ydotool" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "docker" "libvirtd" "kvm" "ydotool" "input" ];
     shell = pkgs.fish;
   };
 
-  home-manager.users.roehl = { lib, ... }: {
+home-manager.users.roehl = { lib, ... }: {
     home.stateVersion = "24.05";
     home.enableNixpkgsReleaseCheck = false;
+
+    programs.plasma = {
+      enable = true;
+      shortcuts = {
+        "services/org.kde.brave-browser.desktop"."_launch" = "Meta+B";
+        "services/org.kde.spectacle.desktop"."_launch" = "Print";
+        "kwin"."Window Close" = "Meta+Q";
+        "kwin"."Window Maximize" = "Meta+Up";
+        
+        # Shortcuts must be defined as "Command Name" = "Key"
+        # The command itself is usually defined separately in Plasma or 
+        # triggered via a different method. 
+        # For simple command-based triggers in Plasma:
+        "commands" = {
+          "Type Raoul" = "${pkgs.ydotool}/bin/ydotool type 'Raoul ist cool5'";
+          "Run Autoclicker" = "/home/roehl/scripts/autoclicker.py";
+        };
+      };
+    };
   };
 
   fonts.packages = with pkgs; [ noto-fonts noto-fonts-cjk-sans noto-fonts-color-emoji inter nerd-fonts.jetbrains-mono nerd-fonts.meslo-lg ];
@@ -86,7 +106,8 @@
   environment.systemPackages = with pkgs; [
     git gh chezmoi micro ghostty kitty fastfetch starship btop yazi ripgrep atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp eza bat zoxide fd fzf jq wl-clipboard
     brave firefox vscodium obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
-    mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils
+    mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
+    input-remapper
   ];
 
   system.stateVersion = "24.05";
