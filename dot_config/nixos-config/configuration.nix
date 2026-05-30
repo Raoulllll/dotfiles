@@ -64,7 +64,8 @@
     serviceConfig = { ExecStart = "${pkgs.lact}/bin/lact daemon"; };
     wantedBy = [ "multi-user.target" ];
   };
-
+  
+  
   ### --- PROGRAMS ---
   programs.fish.enable = true;
   programs.steam.enable = true;
@@ -78,8 +79,10 @@
       theme = inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.dribbblish;
       colorScheme = "gruvbox";
     };
+  programs.nix-index-database.comma.enable = true;
+  programs.nix-index.enable = true;  
 
-  ### --- VIRTUALIZATION ---
+ ###  --- VIRTUALIZATION ---
   virtualisation = { docker.enable = true; podman.enable = true; waydroid.enable = true; libvirtd.enable = true; };
 
   ### --- USER CONFIGURATION ---
@@ -116,7 +119,7 @@
     brave firefox vscodium obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
     mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
      input-remapper spotify
-       spicetify-cli
+     spicetify-cli nh
   ];
 
   system.stateVersion = "24.05";

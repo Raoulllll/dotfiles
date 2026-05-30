@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager = {
         url = "github:nix-community/plasma-manager";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -15,12 +17,14 @@
       };
   };
  
-  outputs = { self, nixpkgs, nix-cachyos-kernel, home-manager, plasma-manager, spicetify-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, nix-cachyos-kernel, home-manager, plasma-manager,
+              spicetify-nix, nix-index-database, ... }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
+        nix-index-database.nixosModules.nix-index
         spicetify-nix.nixosModules.default
         
         # Home Manager Module
