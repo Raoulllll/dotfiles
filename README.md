@@ -65,40 +65,28 @@ chezmoi
 
 ---
 
-## 🚀 Quick Start & Deployment
+🚀 Quick Start & Deployment
+1. Initialize and Apply
+If you already have Chezmoi installed on a fresh system, bootstrap everything with a single command:
 
-### 1. Initialize the NixOS System
-
-To bootstrap the system configuration from this flake:
-
-```bash
-# Clone the repository
-git clone [https://github.com/Raoulllll/dotfiles.git](https://github.com/Raoulllll/dotfiles.git) ~/zero-dotfiles
-cd ~/zero-dotfiles
-
-# Apply the NixOS configuration (replace <hostname> with your specific host)
-sudo nixos-rebuild switch --flake .#<hostname>
-
-```
-
-### 2. Apply Personal Dotfiles with Chezmoi
-
-Once the core environment and Chezmoi are installed via Nix, initialize your dotfiles:
-
-```bash
-# Initialize and apply chezmoi directly from the repository
+Bash
 chezmoi init --apply Raoulllll
+2. Manual Setup Sequence
+Alternatively, you can clone down your source and run your local bootstrap execution pipeline directly:
 
-```
+Bash
+# Initialize source path
+chezmoi init Raoulllll
 
-For subsequent local changes within the chezmoi source directory:
+# Run your custom configuration script 
+cd ~/.local/share/chezmoi
+./executable_bootstrap.sh
+🔧 Maintenance Utilities
+Your configuration provides specific helper workflows mapped directly in your local binary path:
 
-```bash
-chezmoi apply
+executable_rebuild: Run this command locally to apply system generation rebuilds quickly.
 
-```
-
----
+executable_cz-sync.sh: Handles tracking, staging, and updating configuration definitions safely with Git.
 
 ## 🎨 Modern Tools Configured
 
