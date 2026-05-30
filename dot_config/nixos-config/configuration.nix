@@ -148,7 +148,7 @@
     brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
     mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
      input-remapper spotify kdePackages.partitionmanager
-     spicetify-cli nh
+     spicetify-cli nh wine
      (pkgs.runCommand "sddm-theme-astronaut" {} ''
          mkdir -p $out/share/sddm/themes/sddm-astronaut-theme
          cp -r ${inputs.sddm-astronaut}/* $out/share/sddm/themes/sddm-astronaut-theme/
