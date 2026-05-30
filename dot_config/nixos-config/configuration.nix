@@ -117,7 +117,7 @@
 
   environment.systemPackages = with pkgs; [
     git gh chezmoi micro ghostty kitty fastfetch starship btop yazi ripgrep atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp eza bat zoxide fd fzf jq wl-clipboard
-    brave firefox vscodium obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
+    brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
     mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
      input-remapper spotify
      spicetify-cli nh
