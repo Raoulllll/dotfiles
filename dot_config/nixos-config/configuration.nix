@@ -60,8 +60,8 @@
     # Your newly added CachyOS storage
     fileSystems."/mnt/cachyos" = { 
       device = "/dev/disk/by-uuid/b98daef4-8e1d-4a3f-8c5d-225261bf2a99"; 
-      fsType = "ext4"; 
-      options = [ "users" "nofail" "noatime" "x-systemd.automount" ]; 
+      fsType = "btrfs"; 
+      options = [ "users" "nofail" "noatime" "x-systemd.automount" "compress=zstd" ]; 
     };
   ### --- NIX SETTINGS & PACKAGES ---
   nix.settings.auto-optimise-store = true;
