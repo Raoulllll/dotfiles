@@ -68,7 +68,10 @@ function track
     if test (count $argv) -eq 0
         echo "Usage: track <file_or_directory>"
     else
-        chezmoi add $argv
-        echo "Tracked: $argv"
+        # We use a loop so you can track multiple files at once if you want
+        for file in $argv
+            chezmoi add $file
+            echo "Tracked: $file"
+        end
     end
 end
