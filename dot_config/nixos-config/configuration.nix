@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   ### --- BOOT & KERNEL ---
@@ -72,6 +72,12 @@
   programs.kdeconnect.enable = true;
   programs.ydotool.enable = true;
   programs.gamescope.enable = true;
+  programs.spicetify = {
+      enable = true;
+      # 'theme' expects an attribute set of themes from the flake
+      theme = inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.dribbblish;
+      colorScheme = "gruvbox";
+    };
 
   ### --- VIRTUALIZATION ---
   virtualisation = { docker.enable = true; podman.enable = true; waydroid.enable = true; libvirtd.enable = true; };
@@ -108,7 +114,9 @@
   environment.systemPackages = with pkgs; [
     git gh chezmoi micro ghostty kitty fastfetch starship btop yazi ripgrep atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp eza bat zoxide fd fzf jq wl-clipboard
     brave firefox vscodium obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
-    mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest input-remapper
+    mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
+     input-remapper spotify
+       spicetify-cli
   ];
 
   system.stateVersion = "24.05";
