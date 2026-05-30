@@ -73,15 +73,16 @@
   programs.kdeconnect.enable = true;
   programs.ydotool.enable = true;
   programs.gamescope.enable = true;
+  programs.nix-index-database.comma.enable = true;
+  programs.nix-index.enable = true;
   programs.spicetify = {
       enable = true;
       # 'theme' expects an attribute set of themes from the flake
       theme = inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.dribbblish;
-      colorScheme = "gruvbox";
+      colorScheme = "tokyo-night";
     };
-  programs.nix-index-database.comma.enable = true;
-  programs.nix-index.enable = true;  
-
+    
+ 
  ###  --- VIRTUALIZATION ---
   virtualisation = { docker.enable = true; podman.enable = true; waydroid.enable = true; libvirtd.enable = true; };
 
