@@ -23,13 +23,43 @@ A fully declarative, reproducible system configuration and dotfiles management s
 ## 📂 Repository Structure
 
 ```text
-.
-├── flake.nix                  # Entry point for the NixOS system configuration
-├── hosts/                     # Machine-specific configurations (hardware, hostnames)
-├── modules/                   # Reusable NixOS and Home Manager modules
-└── dot_local/share/chezmoi/   # Chezmoi source directory
-    ├── dot_config/            # Managed configuration files (ghostty, starship, etc.)
-    └── chezmoi.yaml.tmpl      # Chezmoi configuration template
+chezmoi
+├── README.md
+├── executable_bootstrap.sh
+├── executable_run_once_before_setup.sh
+├── dot_gitconfig
+├── pkglist.txt
+├── bin/
+│   ├── executable_autoclicker.py
+│   ├── executable_cz-sync.sh
+│   ├── executable_fetch-layout
+│   └── executable_rebuild
+├── dot_local/
+└── dot_config/
+    ├── Kvantum/
+    ├── fastfetch/
+    │   ├── config.jsonc
+    │   └── my_art.txt
+    ├── fish/
+    │   └── config.config.fish
+    ├── ghostty/
+    │   ├── config
+    │   ├── empty_config.ghostty
+    │   └── themes/
+    ├── gtk-3.0/
+    ├── gtk-4.0/
+    ├── kitty/
+    ├── micro/
+    │   ├── bindings.json
+    │   ├── settings.json
+    │   └── plug/filemanager/
+    ├── nixos-config/
+    │   ├── configuration.nix
+    │   └── flake.nix
+    ├── private_plasma-org.kde.plasma.desktop-appletsrc
+    ├── private_plasmashellrc
+    ├── starship.toml
+    └── symlink_hypr
 
 ```
 
