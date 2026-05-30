@@ -1,13 +1,13 @@
+[commands]
+"System Configuration Backup" = "sh /home/roehl/.local/bin/cz-sync.sh"
+"NixOS Flake Rebuild" = "rebuild"
+
+[post_commands]
+"NixOS Storage Cleanup" = "sudo nix-collect-garbage -d"
+
 [misc]
-# Added "chezmoi" to the disabled array
 disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi"]
 display_time = true
 assume_yes = true
-cleanup = true
 nix_handler = "vanilla"
-
-[commands]
-# Execute your actual sync script using its deployed location in your home bin folder
-"System Configuration Backup" = "sh /home/roehl/.local/bin/cz-sync.sh"
-
-"NixOS Flake Rebuild" = "rebuild"
+cleanup = true
