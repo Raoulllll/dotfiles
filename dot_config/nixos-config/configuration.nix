@@ -96,6 +96,19 @@
   programs.steam.enable = true;
   programs.gamemode.enable = true;
   programs.kdeconnect.enable = true;
+  programs.ydotool.enable = true;
+  # Valve's Wayland Micro-compositor
+  programs.gamescope.enable = true;
+  
+    # Enable the background daemon for the LACT AMDGPU Controller
+    systemd.services.lact = {
+      description = "AMDGPU Control Daemon";
+      enable = true;
+      serviceConfig = {
+        ExecStart = "${pkgs.lact}/bin/lact daemon";
+      };
+      wantedBy = [ "multi-user.target" ];
+    };
 
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
@@ -106,7 +119,7 @@
 
   users.users.roehl = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" "docker" "libvirtd" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "docker" "libvirtd" "kvm" "ydotool" ];
     shell = pkgs.fish;
   };
 
@@ -122,11 +135,24 @@
 
   # --- PACKAGES ---
   environment.systemPackages = with pkgs; [
-    git gh chezmoi micro ghostty fastfetch starship btop yazi ripgrep
+    # Terminal & CLI Tools
+    git gh chezmoi micro ghostty kitty fastfetch starship btop yazi ripgrep
     atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp
-    eza bat zoxide fd
-    brave firefox vscodium obs-studio qbittorrent spotify vesktop onlyoffice-desktopeditors
-    mangohud distrobox virt-manager protonup-qt mgba
+    eza bat zoxide fd fzf jq wl-clipboard
+    
+    # Core Applications & Media
+    brave firefox vscodium obs-studio qbittorrent vesktop onlyoffice-desktopeditors
+    stremio winboat mpv
+    
+    # Utilities & Gaming
+    mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact
+    
+    # KDE Theme Engines
+    kdePackages.kvantum
+    catppuccin-kvantum
+    
+    # Network Storage Utilities
+    cifs-utils nfs-utils
   ];
 
   system.stateVersion = "24.05"; 
