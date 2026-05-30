@@ -92,3 +92,13 @@ abbr -a mfish 'micro ~/.config/fish/config.fish '
 
 # If you ever need to go back to your home dir
 abbr -a home 'cd ~'
+
+# Directory Jumps
+abbr -a .. 'cd ..'
+abbr -a ... 'cd ../..'
+abbr -a .... 'cd ../../..'
+
+# Quick Configs
+abbr -a conf 'cd ~/.config'
+
+abbr -a logs 'journalctl -p 3 -xb' # Shows only critical errors
