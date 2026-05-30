@@ -79,3 +79,7 @@ end
 function sfish
     source ~/.config/fish/config.fish
 end
+
+function nano
+    micro $argv
+end
