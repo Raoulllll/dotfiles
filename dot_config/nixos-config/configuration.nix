@@ -122,6 +122,10 @@ networking.networkmanager.ensureProfiles.profiles = {
   services.input-remapper.enable = true;
   services.pipewire = { enable = true; alsa.enable = true; pulse.enable = true; };
   virtualisation = { docker.enable = true; podman.enable = true; libvirtd.enable = true; };
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   ### --- DESKTOP ENVIRONMENT (PLASMA 6) ---
   services.desktopManager.plasma6.enable = true;
@@ -288,7 +292,7 @@ networking.networkmanager.ensureProfiles.profiles = {
     # Gaming & System Utils
     mangohud distrobox virt-manager protonup-qt mgba wine
     lact cifs-utils nfs-utils evtest input-remapper kdePackages.partitionmanager
-    spicetify-cli
+    spicetify-cli ollama
     
     # Custom SDDM Theme
     (pkgs.runCommand "sddm-theme-astronaut" {} ''
