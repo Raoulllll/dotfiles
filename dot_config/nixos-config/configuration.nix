@@ -169,6 +169,30 @@ in
     home.stateVersion = "24.05";
     home.enableNixpkgsReleaseCheck = false;
     xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
+
+    # --- Distrobox Package Counter Background Service ---
+        systemd.user.services.distrobox-pkg-counter = {
+          Unit = {
+            Description = "Update Distrobox package counts for fastfetch";
+          };
+          Service = {
+            Type = "oneshot";
+            ExecStart = "/home/roehl/.local/bin/distrobox-pkg-counter.sh";
+          };
+        };
+    
+        systemd.user.timers.distrobox-pkg-counter = {
+          Unit = {
+            Description = "Run distrobox-pkg-counter every hour";
+          };
+          Timer = {
+            OnCalendar = "hourly";
+            Persistent = true;
+          };
+          Install = {
+            WantedBy = [ "timers.target" ];
+          };
+        };
     
     programs.plasma = {
       enable = true;
