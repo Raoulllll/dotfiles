@@ -118,6 +118,13 @@ networking.networkmanager.ensureProfiles.profiles = {
 
   ### --- SERVICES & VIRTUALIZATION ---
   services.flatpak.enable = true;
+  services.ollama = {
+    enable = true;
+    host = "0.0.0.0";
+    package = pkgs.ollama-rocm; # Select the CUDA variant
+    openFirewall = true;
+    # loadModels = [ "llama3.2:3b" ];
+  };
   services.samba.enable = true;
   services.input-remapper.enable = true;
   services.pipewire = { enable = true; alsa.enable = true; pulse.enable = true; };
