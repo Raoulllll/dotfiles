@@ -84,7 +84,7 @@ abbr -a mfish 'micro ~/.config/fish/config.fish'
 abbr -a top   'btop'
 abbr -a logs  'journalctl -p 3 -xb'
 abbr -a backup '~/.local/bin/cz-sync.sh'
-
+abbr -a try    'nix-shell -p'
 ### 4. GREETING
 set -g fish_greeting ""
 fastfetch
