@@ -95,13 +95,13 @@ in
   fileSystems."/home/roehl/Vault" = { 
     device = "/dev/disk/by-uuid/95aba3f0-430f-4c68-b976-913409565258"; 
     fsType = "ext4"; 
-    options = [ "users" "nofail" "noatime" ]; 
+    options = [ "users" "nofail" "exec" "noatime" ]; 
   };
   
   fileSystems."/home/roehl/BIG" = { 
     device = "/dev/disk/by-uuid/445515f0-70a3-4cee-a4af-54aa663eddef"; 
     fsType = "btrfs"; 
-    options = [ "users" "nofail" "noatime" "compress=zstd" ]; 
+    options = [ "users" "nofail" "exec"  "noatime" "compress=zstd" ]; 
   };
   
   fileSystems."/mnt/cachyos" = { 
@@ -193,6 +193,58 @@ in
             WantedBy = [ "timers.target" ];
           };
         };
+
+# ONLY Nix package names go here
+            programs.neovim = {
+                     enable = true;
+                     defaultEditor = true;
+                     viAlias = true;
+                     vimAlias = true;
+                     
+                     # 1. Nix packages ONLY
+                     plugins = with pkgs.vimPlugins; [
+                       lualine-nvim
+                       neo-tree-nvim
+                       nvim-web-devicons
+                       harpoon
+                       nui-nvim
+                       plenary-nvim
+                     ];
+                     
+                     # 2. Lua configuration MUST stay inside programs.neovim
+                     extraConfig = ''
+                       lua << EOF
+                       -- (Keep your existing Micro shortcuts here)
+               
+                       -- Transparent Background 
+                       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+                       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+                       vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+               
+                       -- Plugins Setup
+                       require('neo-tree').setup({
+                                 filesystem = {
+                                   filtered_items = {
+                                     visible = true, -- This is the setting that shows hidden files
+                                     hide_dotfiles = false,
+                                     hide_gitignored = false,
+                                   },
+                                 },
+                               })
+                       require('lualine').setup({})
+                       
+                       -- Press Ctrl+E to slide the explorer open/closed from any mode
+                       vim.keymap.set({'n', 'i', 'v'}, '<C-e>', '<Esc>:Neotree toggle<CR>', { desc = 'Toggle File Explorer' })
+               
+                       -- Harpoon (Your Favorites)
+                       local mark = require("harpoon.mark")
+                       local ui = require("harpoon.ui")
+               
+                       vim.keymap.set('n', '<C-h>', mark.add_file, { desc = 'Add to Harpoon' })
+                       vim.keymap.set('n', '<C-m>', ui.toggle_quick_menu, { desc = 'Open Harpoon Menu' })
+                       EOF
+                     '';
+                   };
     
     programs.plasma = {
       enable = true;
@@ -226,7 +278,7 @@ in
     dnsmasq iptables
     
     # Terminals & Prompts
-    kitty ghostty fastfetch starship cbonsai cowsay
+    kitty ghostty fastfetch starship cbonsai cowsay neovim
     
     # GUI Apps
     brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors 
