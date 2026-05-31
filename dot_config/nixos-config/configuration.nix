@@ -40,31 +40,31 @@ in
        "/home/roehl/.config/nixos-config/hotspot-secret.env" 
      ];
    
-     networking.networkmanager.ensureProfiles.profiles = {
-       "PC-Hotspot" = {
-         connection = {
-           id = "PC-Hotspot";
-           type = "wifi";
-           autoconnect = true;
-           autoconnect-priority = 0;
-         };
-         wifi = {
-           mode = "ap";
-           ssid = "Roehl"; # You can leave the SSID plain text here
-         };
-         wifi-security = {
-           key-mgmt = "wpa-psk";
-           # Reference the variable from your .env file
-           psk = "$HOTSPOT_PASSWORD"; 
-         };
-         ipv4 = {
-           method = "shared";
-         };
-         ipv6 = {
-           method = "shared";
-         };
-       };
-     };
+networking.networkmanager.ensureProfiles.profiles = {
+    "PC-Hotspot" = {
+      connection = {
+        id = "PC-Hotspot";
+        type = "wifi";
+        autoconnect = true;
+        autoconnect-priority = 0;
+      };
+      wifi = {
+        mode = "ap";
+        ssid = "Roehl"; # You can leave the SSID plain text here
+      };
+      wifi-security = {
+        key-mgmt = "wpa-psk";
+        # Reference the variable from your .env file
+        psk = "$HOTSPOT_PASSWORD"; 
+      };
+      ipv4 = {
+        method = "shared";
+      };
+      ipv6 = {
+        method = "shared";
+      };
+    };
+  };
     
   ### --- LOCALIZATION & KEYBOARD ---
   time.timeZone = "Europe/Zurich";
