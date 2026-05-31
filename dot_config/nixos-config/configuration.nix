@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, lib,... }: {
+{ config, pkgs, inputs, lib, ... }: 
+
+let 
+  # Assign the correct packages for Spicetify Themes
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+in
+{
   imports = [ ./hardware-configuration.nix ];
 
   ### --- BOOT & KERNEL ---
@@ -13,6 +19,13 @@
   hardware.graphics = { enable = true; enable32Bit = true; };
   services.xserver.videoDrivers = [ "amdgpu" ];
   services.hardware.openrgb.enable = true;
+  
+  systemd.services.lact = {
+    description = "AMDGPU Control Daemon";
+    enable = true;
+    serviceConfig = { ExecStart = "${pkgs.lact}/bin/lact daemon"; };
+    wantedBy = [ "multi-user.target" ];
+  };
 
   ### --- LOCALIZATION & KEYBOARD ---
   time.timeZone = "Europe/Zurich";
@@ -27,91 +40,64 @@
   services.xserver.xkb = { layout = "ch"; variant = "de"; };
   console.keyMap = "sg";
 
-  ### --- DESKTOP ENVIRONMENT ---
-  services.desktopManager.plasma6.enable = true;
- 
-  security.pam.services.sddm.enableKwallet = true;
-
   ### --- ENVIRONMENT, XDG & FILESYSTEMS ---
   environment.variables = { 
     CHROME_KEYRING = "kwallet6"; 
     EDITOR = "micro"; VISUAL = "micro"; BROWSER = "brave"; TERMINAL = "kitty"; 
   };
+  
   xdg.mime.enable = true;
   xdg.mime.defaultApplications = {
     "text/html" = "brave-browser.desktop";
     "x-scheme-handler/http" = "brave-browser.desktop";
     "text/plain" = "micro.desktop";
   };
-  # Your existing Vault storage
-    fileSystems."/home/roehl/Vault" = { 
-      device = "/dev/disk/by-uuid/95aba3f0-430f-4c68-b976-913409565258"; 
-      fsType = "ext4"; 
-      options = [ "users" "nofail" "noatime" ]; 
-    };
+
+  fileSystems."/home/roehl/Vault" = { 
+    device = "/dev/disk/by-uuid/95aba3f0-430f-4c68-b976-913409565258"; 
+    fsType = "ext4"; 
+    options = [ "users" "nofail" "noatime" ]; 
+  };
   
-    # Your existing BIG storage (Optimized with Btrfs compression)
-    fileSystems."/home/roehl/BIG" = { 
-      device = "/dev/disk/by-uuid/445515f0-70a3-4cee-a4af-54aa663eddef"; 
-      fsType = "btrfs"; 
-      options = [ "users" "nofail" "noatime" "compress=zstd" ]; 
-    };
+  fileSystems."/home/roehl/BIG" = { 
+    device = "/dev/disk/by-uuid/445515f0-70a3-4cee-a4af-54aa663eddef"; 
+    fsType = "btrfs"; 
+    options = [ "users" "nofail" "noatime" "compress=zstd" ]; 
+  };
   
-    # Your newly added CachyOS storage
-    fileSystems."/mnt/cachyos" = { 
-      device = "/dev/disk/by-uuid/b98daef4-8e1d-4a3f-8c5d-225261bf2a99"; 
-      fsType = "btrfs"; 
-      options = [ "users" "nofail" "noatime" "x-systemd.automount" "compress=zstd" ]; 
-    };
-  ### --- NIX SETTINGS & PACKAGES ---
+  fileSystems."/mnt/cachyos" = { 
+    device = "/dev/disk/by-uuid/b98daef4-8e1d-4a3f-8c5d-225261bf2a99"; 
+    fsType = "btrfs"; 
+    options = [ "users" "nofail" "noatime" "x-systemd.automount" "compress=zstd" ]; 
+  };
+
+  ### --- NIX SETTINGS ---
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.gc = { automatic = true; dates = "weekly"; options = "--delete-older-than 7d"; };
   nixpkgs.config.allowUnfree = true;
 
-  ### --- SERVICES & DAEMONS ---
+  ### --- SERVICES & VIRTUALIZATION ---
   services.flatpak.enable = true;
   services.samba.enable = true;
   services.input-remapper.enable = true;
   services.pipewire = { enable = true; alsa.enable = true; pulse.enable = true; };
-  services.displayManager.sddm = {
-      enable = true;
-      theme = "sddm-astronaut-theme";
-      package = lib.mkForce pkgs.kdePackages.sddm;
-      extraPackages = [
-        pkgs.qt6.qtsvg
-        pkgs.qt6.qtdeclarative
-        pkgs.qt6.qtmultimedia # Add this to resolve the missing dependency
-      ];
-    };
- 
-  systemd.services.lact = {
-    description = "AMDGPU Control Daemon";
-    enable = true;
-    serviceConfig = { ExecStart = "${pkgs.lact}/bin/lact daemon"; };
-    wantedBy = [ "multi-user.target" ];
-  };
-  
-  
-  ### --- PROGRAMS ---
-  programs.fish.enable = true;
-  programs.steam.enable = true;
-  programs.gamemode.enable = true;
-  programs.kdeconnect.enable = true;
-  programs.ydotool.enable = true;
-  programs.gamescope.enable = true;
-  programs.nix-index-database.comma.enable = true;
-  programs.nix-index.enable = true;
-  programs.spicetify = {
-      enable = true;
-      # 'theme' expects an attribute set of themes from the flake
-      theme = inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.dribbblish;
-      colorScheme = "tokyo-night";
-    };
-    
- 
- ###  --- VIRTUALIZATION ---
   virtualisation = { docker.enable = true; podman.enable = true; libvirtd.enable = true; };
+
+  ### --- DESKTOP ENVIRONMENT (PLASMA 6) ---
+  services.desktopManager.plasma6.enable = true;
+  security.pam.services.sddm.enableKwallet = true;
+  
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "sddm-astronaut-theme";
+    package = lib.mkForce pkgs.kdePackages.sddm;
+    extraPackages = [
+      pkgs.qt6.qtsvg
+      pkgs.qt6.qtdeclarative
+      pkgs.qt6.qtmultimedia
+    ];
+  };
 
   ### --- USER CONFIGURATION ---
   users.users.roehl = {
@@ -120,11 +106,31 @@
     shell = pkgs.fish;
   };
 
+  ### --- SYSTEM PROGRAMS ---
+  programs.fish.enable = true;
+  programs.steam.enable = true;
+  programs.gamemode.enable = true;
+  programs.kdeconnect.enable = true;
+  programs.ydotool.enable = true;
+  programs.gamescope.enable = true;
+  
+  programs.nix-index-database.comma.enable = true;
+  programs.nix-index.enable = true;
+  
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.dribbblish;
+    colorScheme = "tokyo-night";
+  };
+
   ### --- HOME MANAGER ---
   home-manager.users.roehl = { lib, ... }: {
+    imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
+    
     home.stateVersion = "24.05";
     home.enableNixpkgsReleaseCheck = false;
     xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
+    
     programs.plasma = {
       enable = true;
       shortcuts = {
@@ -141,19 +147,33 @@
   };
 
   ### --- FONTS & SYSTEM PACKAGES ---
-  fonts.packages = with pkgs; [ noto-fonts noto-fonts-cjk-sans noto-fonts-color-emoji inter nerd-fonts.jetbrains-mono nerd-fonts.meslo-lg ];
+  fonts.packages = with pkgs; [ 
+    noto-fonts noto-fonts-cjk-sans noto-fonts-color-emoji 
+    inter nerd-fonts.jetbrains-mono nerd-fonts.meslo-lg 
+  ];
 
   environment.systemPackages = with pkgs; [
-    git gh chezmoi micro ghostty kitty fastfetch starship btop yazi ripgrep atuin cbonsai cowsay duf pv stow topgrade wget unzip unrar rsync yt-dlp eza bat zoxide fd fzf jq wl-clipboard
-    brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors winboat mpv
-    mangohud distrobox virt-manager protonup-qt mgba spicetify-cli lact cifs-utils nfs-utils evtest
-     input-remapper spotify kdePackages.partitionmanager
-     spicetify-cli nh wine
-     (pkgs.runCommand "sddm-theme-astronaut" {} ''
-         mkdir -p $out/share/sddm/themes/sddm-astronaut-theme
-         cp -r ${inputs.sddm-astronaut}/* $out/share/sddm/themes/sddm-astronaut-theme/
-       '')
-     
+    # CLI Tools
+    git gh chezmoi micro btop yazi ripgrep atuin fd fzf jq zoxide eza bat
+    wget unzip unrar rsync yt-dlp pv duf wl-clipboard nh stow topgrade
+    
+    # Terminals & Prompts
+    kitty ghostty fastfetch starship cbonsai cowsay
+    
+    # GUI Apps
+    brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors 
+    winboat mpv spotify
+    
+    # Gaming & System Utils
+    mangohud distrobox virt-manager protonup-qt mgba wine
+    lact cifs-utils nfs-utils evtest input-remapper kdePackages.partitionmanager
+    spicetify-cli
+    
+    # Custom SDDM Theme
+    (pkgs.runCommand "sddm-theme-astronaut" {} ''
+      mkdir -p $out/share/sddm/themes/sddm-astronaut-theme
+      cp -r ${inputs.sddm-astronaut}/* $out/share/sddm/themes/sddm-astronaut-theme/
+    '')
   ];
 
   system.stateVersion = "24.05";
