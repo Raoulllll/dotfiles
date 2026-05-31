@@ -27,6 +27,45 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 
+  ### --- NETWORKING ---
+  networking.networkmanager.enable = true;
+  # Optional: Define your hostname here if you want it to be something specific
+  networking.hostName = "nixos-desktop";
+  # Open ports for DHCP (67) and DNS (53) so your phone can get an IP
+   networking.firewall.allowedUDPPorts = [ 53 67 ];
+   networking.firewall.allowedTCPPorts = [ 53 ];
+
+   # Point to your untracked secret file
+     networking.networkmanager.ensureProfiles.environmentFiles = [ 
+       "/home/roehl/.config/nixos-config/hotspot-secret.env" 
+     ];
+   
+     networking.networkmanager.ensureProfiles.profiles = {
+       "PC-Hotspot" = {
+         connection = {
+           id = "PC-Hotspot";
+           type = "wifi";
+           autoconnect = true;
+           autoconnect-priority = 0;
+         };
+         wifi = {
+           mode = "ap";
+           ssid = "Roehl"; # You can leave the SSID plain text here
+         };
+         wifi-security = {
+           key-mgmt = "wpa-psk";
+           # Reference the variable from your .env file
+           psk = "$HOTSPOT_PASSWORD"; 
+         };
+         ipv4 = {
+           method = "shared";
+         };
+         ipv6 = {
+           method = "shared";
+         };
+       };
+     };
+    
   ### --- LOCALIZATION & KEYBOARD ---
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -135,7 +174,11 @@ in
       enable = true;
       shortcuts = {
         "services/org.kde.brave-browser.desktop"."_launch" = "Meta+B";
+        # Keep the standard print key for a full screenshot
         "services/org.kde.spectacle.desktop"."_launch" = "Print";
+        # Add this line specifically for the region screenshot
+        "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Meta+Shift+S";
+        
         "kwin"."Window Close" = "Meta+Q";
         "kwin"."Window Maximize" = "Meta+Up";
         "commands" = {
@@ -156,6 +199,7 @@ in
     # CLI Tools
     git gh chezmoi micro btop yazi ripgrep atuin fd fzf jq zoxide eza bat
     wget unzip unrar rsync yt-dlp pv duf wl-clipboard nh stow topgrade
+    dnsmasq iptables
     
     # Terminals & Prompts
     kitty ghostty fastfetch starship cbonsai cowsay
