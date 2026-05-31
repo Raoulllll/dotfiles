@@ -283,7 +283,7 @@ networking.networkmanager.ensureProfiles.profiles = {
     # GUI Apps
     brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors 
     winboat mpv spotify whatip neovim-qt 
-    komikku obsidian 
+    komikku obsidian proton-vpn
     
     # Gaming & System Utils
     mangohud distrobox virt-manager protonup-qt mgba wine
