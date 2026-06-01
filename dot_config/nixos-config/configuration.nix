@@ -32,9 +32,9 @@ in
   # Optional: Define your hostname here if you want it to be something specific
   networking.hostName = "nixos-desktop";
   # Open ports for DHCP (67) and DNS (53) so your phone can get an IP
-   networking.firewall.allowedUDPPorts = [ 53 67 ];
+   networking.firewall.allowedUDPPorts = [ 53 67 config.services.tailscale.port ];
    networking.firewall.allowedTCPPorts = [ 53 ];
-
+  
    # Point to your untracked secret file
      networking.networkmanager.ensureProfiles.environmentFiles = [ 
        "/home/roehl/.config/nixos-config/hotspot-secret.env" 
@@ -65,7 +65,7 @@ networking.networkmanager.ensureProfiles.profiles = {
       };
     };
   };
-    
+   
   ### --- LOCALIZATION & KEYBOARD ---
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -118,6 +118,7 @@ networking.networkmanager.ensureProfiles.profiles = {
 
   ### --- SERVICES & VIRTUALIZATION ---
   services.flatpak.enable = true;
+  services.tailscale.enable = true;
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
@@ -286,7 +287,7 @@ networking.networkmanager.ensureProfiles.profiles = {
     # CLI Tools
     git gh chezmoi micro btop yazi ripgrep atuin fd fzf jq zoxide eza bat
     wget unzip unrar rsync yt-dlp pv duf wl-clipboard nh stow topgrade
-    dnsmasq iptables
+    dnsmasq iptables tailscale ethtool
     
     # Terminals & Prompts
     kitty ghostty fastfetch starship cbonsai cowsay neovim
