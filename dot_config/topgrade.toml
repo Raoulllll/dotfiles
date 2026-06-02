@@ -11,3 +11,4 @@ display_time = true
 assume_yes = true
 nix_handler = "vanilla"
 cleanup = true
+

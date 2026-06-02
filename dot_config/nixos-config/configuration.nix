@@ -119,16 +119,16 @@ networking.networkmanager.ensureProfiles.profiles = {
   ### --- SERVICES & VIRTUALIZATION ---
   services.flatpak.enable = true;
   services.tailscale.enable = true;
-services.keyd = {
-  enable = true;
-  keyboards.logitech = {
-    # Strictly target the Logitech receiver ONLY.
-    ids = [ "046d:40b5" ]; 
-    settings.main = {
-      f13 = "macro(S-r a o u l space i s t space c o o l 5)"; 
+  services.keyd = {
+    enable = true;
+    keyboards.logitech = {
+      # Strictly target the Logitech receiver ONLY.
+      ids = [ "046d:40b5" ]; 
+      settings.main = {
+        f13 = "macro(S-r a o u l space i s t space c o o l 5)"; 
+      };
     };
   };
-};
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
@@ -174,7 +174,7 @@ services.keyd = {
   programs.kdeconnect.enable = true;
   programs.ydotool.enable = true;
   programs.gamescope.enable = true;
-  programs.hyprland.enable = true;
+  
   programs.nix-index-database.comma.enable = true;
   programs.nix-index.enable = true;
   
@@ -188,9 +188,9 @@ services.keyd = {
       home-manager.users.roehl = { lib, ... }: {
         imports = [ 
           inputs.plasma-manager.homeManagerModules.plasma-manager
-          inputs.noctalia.homeModules.default
+          
         ];
-        programs.noctalia-shell.enable = true;
+    
     home.stateVersion = "24.05";
     home.enableNixpkgsReleaseCheck = false;
     xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
