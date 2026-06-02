@@ -196,15 +196,7 @@ networking.networkmanager.ensureProfiles.profiles = {
           };
         };
     
-    wayland.windowManager.hyprland = {
-      enable = true;
-      
-      # Launch Noctalia and source Hyprmod's file
-      extraConfig = ''
-        exec-once = noctalia
-        source = ~/.config/hypr/hyprland-gui.conf
-      '';
-    };
+
         systemd.user.timers.distrobox-pkg-counter = {
           Unit = {
             Description = "Run distrobox-pkg-counter every hour";
