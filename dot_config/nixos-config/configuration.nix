@@ -119,6 +119,16 @@ networking.networkmanager.ensureProfiles.profiles = {
   ### --- SERVICES & VIRTUALIZATION ---
   services.flatpak.enable = true;
   services.tailscale.enable = true;
+services.keyd = {
+  enable = true;
+  keyboards.logitech = {
+    # Strictly target the Logitech receiver ONLY.
+    ids = [ "046d:40b5" ]; 
+    settings.main = {
+      f13 = "macro(S-r a o u l space i s t space c o o l 5)"; 
+    };
+  };
+};
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
@@ -210,57 +220,7 @@ networking.networkmanager.ensureProfiles.profiles = {
           };
         };
 
-# ONLY Nix package names go here
-            programs.neovim = {
-                     enable = true;
-                     defaultEditor = true;
-                     viAlias = true;
-                     vimAlias = true;
-                     
-                     # 1. Nix packages ONLY
-                     plugins = with pkgs.vimPlugins; [
-                       lualine-nvim
-                       neo-tree-nvim
-                       nvim-web-devicons
-                       harpoon
-                       nui-nvim
-                       plenary-nvim
-                     ];
-                     
-                     # 2. Lua configuration MUST stay inside programs.neovim
-                     extraConfig = ''
-                       lua << EOF
-                       -- (Keep your existing Micro shortcuts here)
-               
-                       -- Transparent Background 
-                       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-                       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-                       vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-               
-                       -- Plugins Setup
-                       require('neo-tree').setup({
-                                 filesystem = {
-                                   filtered_items = {
-                                     visible = true, -- This is the setting that shows hidden files
-                                     hide_dotfiles = false,
-                                     hide_gitignored = false,
-                                   },
-                                 },
-                               })
-                       require('lualine').setup({})
-                       
-                       -- Press Ctrl+E to slide the explorer open/closed from any mode
-                       vim.keymap.set({'n', 'i', 'v'}, '<C-e>', '<Esc>:Neotree toggle<CR>', { desc = 'Toggle File Explorer' })
-               
-                       -- Harpoon (Your Favorites)
-                       local mark = require("harpoon.mark")
-                       local ui = require("harpoon.ui")
-               
-                       vim.keymap.set('n', '<C-h>', mark.add_file, { desc = 'Add to Harpoon' })
-                       vim.keymap.set('n', '<C-m>', ui.toggle_quick_menu, { desc = 'Open Harpoon Menu' })
-                       EOF
-                     '';
-                   };
+
     
     programs.plasma = {
       enable = true;
@@ -291,14 +251,14 @@ networking.networkmanager.ensureProfiles.profiles = {
     # CLI Tools
     git gh chezmoi micro btop yazi ripgrep atuin fd fzf jq zoxide eza bat
     wget unzip unrar rsync yt-dlp pv duf wl-clipboard nh stow topgrade
-    dnsmasq iptables tailscale ethtool
+    dnsmasq iptables tailscale ethtool quickshell keyd
     
     # Terminals & Prompts
-    kitty ghostty fastfetch starship cbonsai cowsay neovim
+    kitty fastfetch starship cbonsai cowsay
     
     # GUI Apps
     brave firefox vscode obs-studio qbittorrent vesktop onlyoffice-desktopeditors 
-    winboat mpv spotify whatip neovim-qt 
+    winboat mpv spotify whatip  
     komikku obsidian proton-vpn ferdium
     
     # Gaming & System Utils
