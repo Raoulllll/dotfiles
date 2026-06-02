@@ -164,7 +164,7 @@ networking.networkmanager.ensureProfiles.profiles = {
   programs.kdeconnect.enable = true;
   programs.ydotool.enable = true;
   programs.gamescope.enable = true;
-  
+  programs.hyprland.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.nix-index.enable = true;
   
@@ -174,10 +174,13 @@ networking.networkmanager.ensureProfiles.profiles = {
     colorScheme = "tokyo-night";
   };
 
-  ### --- HOME MANAGER ---
-  home-manager.users.roehl = { lib, ... }: {
-    imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
-    
+ ### --- HOME MANAGER ---
+      home-manager.users.roehl = { lib, ... }: {
+        imports = [ 
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+          inputs.noctalia.homeModules.default
+        ];
+        programs.noctalia-shell.enable = true;
     home.stateVersion = "24.05";
     home.enableNixpkgsReleaseCheck = false;
     xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
@@ -193,6 +196,15 @@ networking.networkmanager.ensureProfiles.profiles = {
           };
         };
     
+    wayland.windowManager.hyprland = {
+      enable = true;
+      
+      # Launch Noctalia and source Hyprmod's file
+      extraConfig = ''
+        exec-once = noctalia
+        source = ~/.config/hypr/hyprland-gui.conf
+      '';
+    };
         systemd.user.timers.distrobox-pkg-counter = {
           Unit = {
             Description = "Run distrobox-pkg-counter every hour";

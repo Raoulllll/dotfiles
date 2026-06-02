@@ -5,6 +5,7 @@
     # System
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
     #Test
     # Modules
     home-manager = {
