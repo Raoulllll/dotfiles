@@ -197,10 +197,6 @@ in
     podman.enable = true;
     libvirtd.enable = true;
   };
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
 
   ### --- DESKTOP ENVIRONMENT (PLASMA 6) ---
   services.desktopManager.plasma6.enable = true;
