@@ -62,6 +62,10 @@ function fish_user_key_bindings
     bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
 end
 
+function try
+    NIXPKGS_ALLOW_UNFREE=1 nix shell --impure nixpkgs#$argv
+end
+
 ### 3. ABBREVIATIONS (The "Shortcuts")
 # These expand in your prompt when you hit space
 
