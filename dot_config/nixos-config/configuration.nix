@@ -356,12 +356,10 @@ in
     cbonsai
     cowsay
     opencode
-    opencode-desktop
 
     # GUI Apps
     brave
     firefox
-    vscode
     obs-studio
     qbittorrent
     vesktop
