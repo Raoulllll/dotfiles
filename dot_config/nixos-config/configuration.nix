@@ -186,7 +186,7 @@ in
     # loadModels = [ "llama3.2:3b" ];
   };
   services.samba.enable = true;
-  programs.gamemode.enable = true;
+
   services.input-remapper.enable = true;
   services.pipewire = {
     enable = true;
@@ -355,6 +355,8 @@ in
     starship
     cbonsai
     cowsay
+    opencode
+    opencode-desktop
 
     # GUI Apps
     brave
