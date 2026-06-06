@@ -48,7 +48,9 @@ in
     67
     config.services.tailscale.port
   ];
-  networking.firewall.allowedTCPPorts = [ 53 ];
+  networking.firewall.allowedTCPPorts = [ 53
+    7007 # Dozzle Agent
+        9001 # Portainer Agent (so your Pi can see this too!)];
 
   # Point to your untracked secret file
   networking.networkmanager.ensureProfiles.environmentFiles = [
