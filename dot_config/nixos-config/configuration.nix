@@ -214,6 +214,35 @@ in
     libvirtd.enable = true;
   };
 
+  virtualisation.oci-containers.containers = {
+
+    immich-machine-learning = {
+      image = "ghcr.io/immich-app/immich-machine-learning:release";
+      ports = [ "3003:3003" ];
+      volumes = [ "/var/lib/immich-ml-cache:/cache" ];
+    }; # <-- Make sure this brace and semicolon are here to close the Immich block
+
+    portainer-agent = {
+      image = "portainer/agent:latest";
+      ports = [ "9001:9001" ];
+      volumes = [
+        "/var/run/docker.sock:/var/run/docker.sock"
+        "/var/lib/docker/volumes:/var/lib/docker/volumes"
+      ];
+    };
+    dozzle = {
+      image = "amir20/dozzle:latest";
+      ports = [ "8888:8080" ];
+      volumes = [ "/var/run/docker.sock:/var/run/docker.sock:ro" ];
+    }; # <-- Closes the Portainer Agent block
+
+  };
+  # 2. How it "merges": Just list your existing containers right next to it!
+  # my-other-app = {
+  #   image = "some/image:latest";
+  #   ports = [ "8080:80" ];
+  # };
+
   ### --- DESKTOP ENVIRONMENT (PLASMA 6) ---
   services.desktopManager.plasma6.enable = true;
   security.pam.services.sddm.enableKwallet = true;
