@@ -152,6 +152,21 @@ in
     ];
   };
 
+  fileSystems."/mnt/nas" = {
+    device = "//192.168.0.100/NAS";
+    fsType = "cifs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+      "x-systemd.idle-timeout=60"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.mount-timeout=5s"
+      "credentials=/root/smb-secrets"
+      "uid=1000"
+      "gid=100"
+    ];
+  };
+
   ### --- NIX SETTINGS ---
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [
@@ -178,13 +193,13 @@ in
       };
     };
   };
-  services.ollama = {
-    enable = true;
-    host = "0.0.0.0";
-    package = pkgs.ollama-rocm; # Select the CUDA variant
-    openFirewall = true;
-    # loadModels = [ "llama3.2:3b" ];
-  };
+  #services.ollama = {
+  #  enable = true;
+  #  host = "0.0.0.0";
+  #  package = pkgs.ollama-rocm; # Select the CUDA variant
+  #  openFirewall = true;
+  #  # loadModels = [ "llama3.2:3b" ];
+  #};
   services.samba.enable = true;
 
   services.input-remapper.enable = true;
@@ -249,7 +264,7 @@ in
 
   ### --- HOME MANAGER ---
   home-manager.users.roehl =
-    { lib, ... }:
+    { lib, pkgs, ... }:
     {
       imports = [
         inputs.plasma-manager.homeManagerModules.plasma-manager
@@ -260,6 +275,9 @@ in
       home.enableNixpkgsReleaseCheck = false;
       xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
 
+      home.packages = with pkgs; [
+        r2modman
+      ];
       # --- Distrobox Package Counter Background Service ---
       systemd.user.services.distrobox-pkg-counter = {
         Unit = {
@@ -355,7 +373,6 @@ in
     starship
     cbonsai
     cowsay
-    opencode
 
     # GUI Apps
     brave
@@ -388,7 +405,6 @@ in
     input-remapper
     kdePackages.partitionmanager
     spicetify-cli
-    ollama
 
     # Custom SDDM Theme
     (pkgs.runCommand "sddm-theme-astronaut" { } ''

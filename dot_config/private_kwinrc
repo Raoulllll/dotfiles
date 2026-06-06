@@ -6,7 +6,7 @@ Number=2
 Rows=1
 
 [Plugins]
-krohnkiteEnabled=true
+krohnkiteEnabled=false
 
 [Script-krohnkite]
 ignoreVDesktop=Games
