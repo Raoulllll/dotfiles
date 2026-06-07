@@ -37,7 +37,7 @@ in
     };
     wantedBy = [ "multi-user.target" ];
   };
-
+  programs.nix-ld.enable = true;
   ### --- NETWORKING ---
   networking.networkmanager.enable = true;
   # Optional: Define your hostname here if you want it to be something specific
@@ -48,9 +48,11 @@ in
     67
     config.services.tailscale.port
   ];
-  networking.firewall.allowedTCPPorts = [ 53
+  networking.firewall.allowedTCPPorts = [
+    53
     7007 # Dozzle Agent
-        9001 # Portainer Agent (so your Pi can see this too!)];
+    9001 # Portainer Agent (so your Pi can see this too!)
+  ];
 
   # Point to your untracked secret file
   networking.networkmanager.ensureProfiles.environmentFiles = [
@@ -119,6 +121,11 @@ in
     "text/plain" = "micro.desktop";
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+  };
+
   fileSystems."/home/roehl/Vault" = {
     device = "/dev/disk/by-uuid/95aba3f0-430f-4c68-b976-913409565258";
     fsType = "ext4";
@@ -170,6 +177,7 @@ in
   };
 
   ### --- NIX SETTINGS ---
+  hardware.bluetooth.enable = true;
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [
     "nix-command"
@@ -216,6 +224,8 @@ in
     libvirtd.enable = true;
   };
 
+  virtualisation.oci-containers.backend = "docker";
+
   virtualisation.oci-containers.containers = {
 
     immich-machine-learning = {
@@ -232,12 +242,16 @@ in
         "/var/lib/docker/volumes:/var/lib/docker/volumes"
       ];
     };
-    dozzle = {
+    dozzle-agent = {
       image = "amir20/dozzle:latest";
-      ports = [ "8888:8080" ];
+      cmd = [
+        "agent"
+        "--hostname"
+        "NixOS-Desktop"
+      ];
+      ports = [ "7007:7007" ];
       volumes = [ "/var/run/docker.sock:/var/run/docker.sock:ro" ];
-    }; # <-- Closes the Portainer Agent block
-
+    };
   };
   # 2. How it "merges": Just list your existing containers right next to it!
   # my-other-app = {
@@ -436,6 +450,8 @@ in
     input-remapper
     kdePackages.partitionmanager
     spicetify-cli
+    modrinth-app
+    prismlauncher
 
     # Custom SDDM Theme
     (pkgs.runCommand "sddm-theme-astronaut" { } ''
