@@ -196,7 +196,7 @@ in
     samba.enable = true;
     input-remapper.enable = true;
   };
-
+  services.udev.packages = [ pkgs.dualsensectl ];
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
     enable = true;
@@ -205,6 +205,8 @@ in
   };
 
   security.pam.services.sddm.enableKwallet = true;
+
+  security.sudo.wheelNeedsPassword = false;
 
   ### --- 8. VIRTUALIZATION & CONTAINERS ---
   virtualisation = {
@@ -372,6 +374,7 @@ in
     spicetify-cli
     virt-manager
     wine
+    dualsensectl
   ];
 
   ### --- 12. USERS & HOME MANAGER ---
