@@ -58,6 +58,27 @@ function track --description "Add file to chezmoi"
     end
 end
 
+function rebuild
+    # 1. Navigate to your config folder
+    pushd ~/.config/nixos-config
+
+    # 2. Stage all files
+    git add .
+
+    # 3. Commit only if there are changes (prevents errors if you run it twice)
+    if not git diff --staged --quiet
+        git commit -m "Auto-commit before rebuild"
+    end
+
+    # 4. Run your build command
+    # (Assuming you use 'nh' based on your package list,
+    # but replace this line if your actual command is different)
+    nh os switch .
+
+    # 5. Return to the directory you started in
+    popd
+end
+
 function fish_user_key_bindings
     bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
 end
