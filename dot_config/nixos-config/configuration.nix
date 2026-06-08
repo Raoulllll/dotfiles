@@ -72,7 +72,18 @@ in
       ];
     };
   };
+  # Force your PC to strictly use your Pi-hole
+  networking.nameservers = [ "192.168.0.100" ]; # Replace with your actual Pi-hole IP
 
+  services.resolved = {
+    enable = true;
+    # DNSSEC validation often breaks or delays queries when routing through a Pi-hole
+    dnssec = "false";
+    # Stop systemd-resolved from waiting for LLMNR timeouts
+    llmnr = "false";
+    # Clear out default fallback servers that might be causing timeouts
+    fallbackDns = [ ];
+  };
   ### --- 4. LOCALIZATION & CONSOLE ---
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
