@@ -153,6 +153,8 @@ in
     options = "--delete-older-than 7d";
   };
   nixpkgs.config.allowUnfree = true;
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   ### --- 7. SERVICES ---
   services = {
@@ -167,6 +169,7 @@ in
         qtmultimedia
       ];
     };
+
     xserver = {
       videoDrivers = [ "amdgpu" ];
       xkb = {
