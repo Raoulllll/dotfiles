@@ -218,6 +218,20 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 
+  systemd.user.services.odysseus = {
+    description = "Odysseus AI Workspace";
+    wantedBy = [ "default.target" ]; # Starts silently when you log in
+    environment = {
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+      HF_HUB_ENABLE_HF_TRANSFER = "0";
+    };
+    serviceConfig = {
+      ExecStart = "${inputs.odysseus.packages.${pkgs.system}.odysseus-dev}/bin/odysseus-dev";
+      Restart = "on-failure";
+      TimeoutStartSec = "10min"; # Prevents timeout errors if a large update is downloading
+    };
+  };
+
   security.pam.services.sddm.enableKwallet = true;
 
   security.sudo.wheelNeedsPassword = false;
@@ -389,6 +403,8 @@ in
     virt-manager
     wine
     dualsensectl
+
+    (llama-cpp.override { rocmSupport = true; })
   ];
 
   ### --- 12. USERS & HOME MANAGER ---

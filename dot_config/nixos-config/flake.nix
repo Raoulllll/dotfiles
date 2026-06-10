@@ -3,6 +3,10 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
+  # Add your fork right here:
+  inputs.odysseus.url = "github:Raoulllll/odysseus-nix";
+
   inputs.home-manager = {
     url = "github:nix-community/home-manager";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -67,13 +71,22 @@
           inputs.nix-index-database.nixosModules.nix-index
           inputs.spicetify-nix.nixosModules.default
 
+          # Install the launcher package natively from your new fork
+          (
+            { pkgs, ... }:
+            {
+              environment.systemPackages = [
+                inputs.odysseus.packages.x86_64-linux.odysseus-dev
+              ];
+            }
+          )
+
           # Home Manager Module Setup
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
-            # User-specific settings are handled inside configuration.nix
           }
         ];
       };
