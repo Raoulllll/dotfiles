@@ -1,10 +1,10 @@
 [commands]
 "System Configuration Backup" = "sh /home/roehl/.local/bin/cz-sync.sh"
 "Nix Configuration Rebuild" = "/home/roehl/.local/bin/rebuild"
-
+#hallo
 [post_commands]
 "Nix Storage Cleanup" = "sudo nix-collect-garbage -d"
-#test
+
 [misc]
 # We disable these because we are handling them via your custom scripts above
 disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi", "home-manager"]
