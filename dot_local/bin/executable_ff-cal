@@ -1,0 +1,5 @@
+#!/bin/sh
+# Get calendar, strip headers, and print rows with explicit inline padding
+cal | tail -n +2 | while IFS= read -r line; do
+    printf "                                %s\r\n" "$line"
+done
