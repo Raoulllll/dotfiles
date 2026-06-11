@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-home-manager switch --flake ~/.config/home-manager#roehl "$@"
+home-manager switch --flake ~/.config/home-manager#roehl

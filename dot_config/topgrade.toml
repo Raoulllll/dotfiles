@@ -1,14 +1,14 @@
 [commands]
 "System Configuration Backup" = "sh /home/roehl/.local/bin/cz-sync.sh"
-"NixOS Flake Rebuild" = "rebuild"
+"Nix Configuration Rebuild" = "/home/roehl/.local/bin/rebuild"
 
 [post_commands]
-"NixOS Storage Cleanup" = "sudo nix-collect-garbage -d"
-
+"Nix Storage Cleanup" = "sudo nix-collect-garbage -d"
+#test
 [misc]
-disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi", "home-manager"] ]
+# We disable these because we are handling them via your custom scripts above
+disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi", "home-manager"]
 display_time = true
 assume_yes = true
 nix_handler = "vanilla"
 cleanup = true
-
