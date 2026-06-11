@@ -3,7 +3,7 @@
 # Use --force to prevent interactive prompts from hanging the script
 if [ -n "$(chezmoi git -- status --porcelain)" ]; then
     echo "Changes detected! Updating tracked state..."
-    
+#test    
     # Force re-add and force git add to prevent hangs
     chezmoi re-add --force
     chezmoi git -- add .
