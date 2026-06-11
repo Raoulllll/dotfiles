@@ -64,7 +64,6 @@ function fish_user_key_bindings
 end
 
 function try
-    NIXPKGS_ALLOW_UNFREE=1 nix shell --impure nixpkgs#$argv
 end
 
 ### 3. ABBREVIATIONS (The "Shortcuts")
@@ -73,7 +72,6 @@ end
 # Navigation
 abbr -a home 'cd ~'
 abbr -a conf 'cd ~/.config'
-abbr -a ncfg 'cd ~/.config/nixos-config'
 abbr -a scripts 'cd ~/scripts'
 abbr -a vault 'cd ~/Vault'
 abbr -a big 'cd /mnt/BIG'
