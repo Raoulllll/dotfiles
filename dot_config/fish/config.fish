@@ -58,26 +58,6 @@ function track --description "Add file to chezmoi"
     end
 end
 
-function rebuild
-    # 1. Navigate to your config folder
-    pushd ~/.config/nixos-config
-
-    # 2. Stage all files
-    git add .
-
-    # 3. Commit only if there are changes (prevents errors if you run it twice)
-    if not git diff --staged --quiet
-        git commit -m "Auto-commit before rebuild"
-    end
-
-    # 4. Run your build command
-    # (Assuming you use 'nh' based on your package list,
-    # but replace this line if your actual command is different)
-    nh os switch .
-
-    # 5. Return to the directory you started in
-    popd
-end
 
 function fish_user_key_bindings
     bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
@@ -113,3 +93,18 @@ abbr -a clean 'nh clean all'
 ### 4. GREETING
 set -g fish_greeting ""
 fastfetch
+
+# SSH Agent automatisch starten
+if not set -q SSH_AUTH_SOCK
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
+# Schlüssel beim ersten Start automatisch laden
+if status is-interactive
+    if not ssh-add -l > /dev/null 2>&1
+        ssh-add ~/.ssh/id_ed25519 2>/dev/null
+    end
+end
+
