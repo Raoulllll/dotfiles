@@ -17,6 +17,10 @@ soleWindowWidth=98
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][72b9503e-4ba0-4715-9030-b79c1802ee4d][55fe5ac3-2cb0-4b1e-a754-9a90a91a7fd3]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][72b9503e-4ba0-4715-9030-b79c1802ee4d][71d1d71a-cf37-4329-8c86-87197d182036]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
@@ -25,7 +29,19 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][72b9503e-4ba0-4715-9030-b79c1802ee4d][f0106d12-00fa-423d-847c-d8188b621c5f]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][72b9503e-4ba0-4715-9030-b79c1802ee4d][ff23820b-d94c-42bc-a9ce-e5e90bb74f6d]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][b0441582-2fde-4f4e-a511-5ff9f899ddea][2680f7e3-09b3-4e4a-a01d-25a5db760849]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][b0441582-2fde-4f4e-a511-5ff9f899ddea][55fe5ac3-2cb0-4b1e-a754-9a90a91a7fd3]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
@@ -37,10 +53,16 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][b0441582-2fde-4f4e-a511-5ff9f899ddea][f0106d12-00fa-423d-847c-d8188b621c5f]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][b0441582-2fde-4f4e-a511-5ff9f899ddea][ff23820b-d94c-42bc-a9ce-e5e90bb74f6d]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Xwayland]
 Scale=1
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=SE
-library=org.kde.kwin.aurorae.v2
-theme=__aurorae__svg__Scratchy

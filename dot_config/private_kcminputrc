@@ -6,6 +6,3 @@ Enabled=false
 
 [Libinput][1356][3302][Sony Interactive Entertainment DualSense Wireless Controller Touchpad]
 Enabled=false
-
-[Mouse]
-cursorTheme=Dracula-cursors
