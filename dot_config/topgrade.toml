@@ -6,7 +6,7 @@
 "NixOS Storage Cleanup" = "sudo nix-collect-garbage -d"
 
 [misc]
-disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi"]
+disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi", "home-manager"] ]
 display_time = true
 assume_yes = true
 nix_handler = "vanilla"
