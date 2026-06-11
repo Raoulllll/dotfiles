@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-nh os switch ~/.config/nixos-config#desktop "$@"
+home-manager switch --flake ~/.config/home-manager#roehl "$@"

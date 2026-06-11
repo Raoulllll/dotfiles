@@ -2,5 +2,5 @@
 chezmoi add ~/.local/bin/*
 chezmoi re-add
 chezmoi git -- add .
-chezmoi git -- commit -m "Auto-backup from NixOS"
+chezmoi git -- commit -m "Auto-backup from CachyOS"
 chezmoi git -- push
