@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# Clear screen and run the perfect fastfetch output
-clear
-fastfetch
-
-# Drop down and append the calendar grid shifted right to match the column
-echo ""
-cal | tail -n +2 | sed 's/^/                                                                /'
