@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
-
-# Check for changes
+#test
+# Use --force to prevent interactive prompts from hanging the script
 if [ -n "$(chezmoi git -- status --porcelain)" ]; then
-    echo "Changes detected! Updating tracked state and syncing to GitHub..."
+    echo "Changes detected! Updating tracked state..."
     
-    # 1. Update chezmoi's internal tracking for existing files
-    chezmoi re-add
-    
-    # 2. Stage changes in the git repo
+    # Force re-add and force git add to prevent hangs
+    chezmoi re-add --force
     chezmoi git -- add .
     
-    # 3. Commit and push
+    echo "Syncing to GitHub..."
     chezmoi git -- commit -m "Auto-backup (CachyOS): $(date '+%Y-%m-%d %H:%M:%S')"
     chezmoi git -- push
     
