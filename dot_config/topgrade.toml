@@ -5,6 +5,6 @@
 
 [misc]
 # We disable these because we are handling them via your custom scripts above
-disable = ["firmware", "nix", "system", "containers", "spicetify", "chezmoi"]
+disable = ["firmware", "nix", "containers", "spicetify", "chezmoi"]
 display_time = true
 assume_yes = true
