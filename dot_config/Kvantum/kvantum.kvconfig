@@ -1,5 +1,5 @@
 [General]
-theme=catppuccin-frappe-blue
+theme=catppuccin-mocha-blue#
 
 [Compositing]
 enforce_blur=true

@@ -148,10 +148,14 @@ menuFont=JetBrainsMono Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
 smallestReadableFont=JetBrainsMono Nerd Font,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
 toolBarFont=JetBrainsMono Nerd Font,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
 
+[Icons]
+Theme=Nordic-bluish
+
 [KDE]
-LookAndFeelPackage=org.kde.breezedark.desktop
+LookAndFeelPackage=Ars-Dark-Global-6
 contrast=4
 frameContrast=0.2
+widgetStyle=kvantum-dark
 
 [KFileDialog Settings]
 Allow Expansion=false
