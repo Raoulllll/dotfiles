@@ -5,7 +5,7 @@
 #function fish_greeting
 #    # smth smth
 #end
-
+#test
 starship init fish | source
 # Force Steam compatibility layers to automatically pass through your gamescope container
 set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/game-wrapper"
