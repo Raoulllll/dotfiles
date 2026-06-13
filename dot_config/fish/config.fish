@@ -1,20 +1,11 @@
 #source /usr/share/cachyos-fish-config/cachyos-config.fish
 
-#overwrite greeting
-# potentially disabling fastfetch
-#function fish_greeting
-#    # smth smth
-#end
-#test
+# Initialize starship
 starship init fish | source
-# Force Steam compatibility layers to automatically pass through your gamescope container
-set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/game-wrapper"
-# Direct all security calls cleanly to the GNOME Secret Service backend
-#set -gx PASSWORD_STORE "gnome-keyring"
 
+# --- ENVIRONMENT SETTINGS ---
 # Automatically route all Steam game launches through your local Gamescope wrapper
 set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/steam-gamescope-wrapper"
-
 
 ### 1. PATH & INITIALIZATION
 fish_add_path -m ~/.local/bin
@@ -58,17 +49,18 @@ function track --description "Add file to chezmoi"
     end
 end
 
-
 function fish_user_key_bindings
     bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
 end
 
-function try
+function nixin
+    pushd ~/nix-config
+    # We add .#roehl to tell Home Manager which configuration to use
+    nix run github:nix-community/home-manager -- switch --flake .#roehl
+    popd
 end
 
 ### 3. ABBREVIATIONS (The "Shortcuts")
-# These expand in your prompt when you hit space
-
 # Navigation
 abbr -a home 'cd ~'
 abbr -a conf 'cd ~/.config'
@@ -88,6 +80,7 @@ abbr -a top   'btop'
 abbr -a logs  'journalctl -p 3 -xb'
 abbr -a backup '~/.local/bin/cz-sync.sh'
 abbr -a clean 'nh clean all'
+
 ### 4. GREETING
 set -g fish_greeting ""
 fastfetch
@@ -105,4 +98,3 @@ if status is-interactive
         ssh-add ~/.ssh/id_ed25519 2>/dev/null
     end
 end
-

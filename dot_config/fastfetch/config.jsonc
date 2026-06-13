@@ -37,45 +37,46 @@
     "break",
 
     // ────────────────────── Containers ──────────────────────
-    {
-      "type": "custom",
-      "format": "\u001b[94m┌────────────────────Containers──────────────────────┐",
-    },
-    {
-      "type": "command",
-      "key": "│ {#magenta}󰡨 Distrobox",
-      "text": "wc -l < $HOME/.cache/distrobox-pkg-counts 2>/dev/null || echo '0'",
-    },
-    {
-      "type": "command",
-      "key": "│ ├── alpine-box (apk)",
-      "text": "grep 'alpine-box' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
-    },
-    {
-      "type": "command",
-      "key": "│ ├── davincibox (rpm)",
-      "text": "grep 'davincibox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
-    },
-    {
-      "type": "command",
-      "key": "│ ├── Ubuntu-24.04 (dpkg)",
-      "text": "grep 'Ubuntu-24.04' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
-    },
-    {
-      "type": "command",
-      "key": "│ ├── arch-sandbox (pacman)",
-      "text": "grep 'arch-sandbox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
-    },
-    {
-      "type": "command",
-      "key": "│ └── debian-sid (dpkg)",
-      "text": "grep 'debian-sid' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
-    },
-    {
-      "type": "custom",
-      "format": "\u001b[94m└────────────────────────────────────────────────────┘",
-    },
-    "break",
+    //{
+    //  "type": "custom",
+    //  "format": "\u001b[94m┌────────────────────Containers──────────────────────┐",
+    //},
+    //
+    //{
+    //  "type": "command",
+    //  "key": "│ {#magenta}󰡨 Distrobox",
+    //  "text": "wc -l < $HOME/.cache/distrobox-pkg-counts 2>/dev/null || echo '0'",
+    //},
+    //{
+    //  "type": "command",
+    //  "key": "│ ├── alpine-box (apk)",
+    //  "text": "grep 'alpine-box' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
+    //},
+    //{
+    //  "type": "command",
+    //  "key": "│ ├── davincibox (rpm)",
+    //  "text": "grep 'davincibox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
+    //},
+    //{
+    //  "type": "command",
+    //  "key": "│ ├── Ubuntu-24.04 (dpkg)",
+    //  "text": "grep 'Ubuntu-24.04' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
+    //},
+    //{
+    //  "type": "command",
+    //  "key": "│ ├── arch-sandbox (pacman)",
+    //  "text": "grep 'arch-sandbox' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
+    //},
+    //{
+    //  "type": "command",
+    //  "key": "│ └── debian-sid (dpkg)",
+    //  "text": "grep 'debian-sid' $HOME/.cache/distrobox-pkg-counts 2>/dev/null | awk -F': ' '{print $2}'",
+    //},
+    //{
+    //  "type": "custom",
+    //  "format": "\u001b[94m└────────────────────────────────────────────────────┘",
+    //},
+    //"break",
 
     // ────────────────────── Environment ──────────────────────
     {
