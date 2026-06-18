@@ -4,6 +4,7 @@ floating=0
 panelLengthMode=1
 panelOpacity=2
 panelVisibility=2
+shell=org.kde.plasma.desktop
 
 [PlasmaViews][Panel 28][Defaults]
 thickness=36
@@ -13,6 +14,7 @@ floating=0
 panelLengthMode=1
 panelOpacity=2
 panelVisibility=2
+shell=org.kde.plasma.desktop
 
 [PlasmaViews][Panel 4][Defaults]
 maxLength=3360
