@@ -27,16 +27,8 @@ echo -e "\n[2/5] Enabling RPM Fusion (Free and Non-Free)..."
 dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
                https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# -----------------------------------------------------------------------------
-# 3. Enable Copr Repositories (For specialized Arch-like tools)
-# -----------------------------------------------------------------------------
-echo -e "\n[3/5] Enabling Copr repositories..."
-# lact for AMD GPU control
-dnf copr enable -y ryanbv/lact
-# anicy for process priority management
-dnf copr enable -y ryanbv/anicy-cpp
-# keyd for custom keyboard remapping
-dnf copr enable -y dbe/keyd
+
+
 
 # -----------------------------------------------------------------------------
 # 4. Install Core Packages

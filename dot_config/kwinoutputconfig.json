@@ -36,7 +36,7 @@
                 "iccProfilePath": "",
                 "maxBitsPerColor": 0,
                 "mode": {
-                    "flags": 1,
+                    "flags": 0,
                     "height": 1440,
                     "refreshRate": 175000,
                     "width": 3440
@@ -48,7 +48,7 @@
                 "sdrGamutWideness": 0,
                 "sharpness": 0,
                 "transform": "Normal",
-                "uuid": "55fe5ac3-2cb0-4b1e-a754-9a90a91a7fd3",
+                "uuid": "c5598e5c-d3ca-4c57-a518-dddf2657b9ce",
                 "vrrPolicy": "Never",
                 "wideColorGamut": false
             },
@@ -99,7 +99,7 @@
                 "sdrGamutWideness": 0,
                 "sharpness": 0,
                 "transform": "Rotated270",
-                "uuid": "ff23820b-d94c-42bc-a9ce-e5e90bb74f6d",
+                "uuid": "5da933ed-221e-4b9a-9fd1-ab47f46bcf38",
                 "vrrPolicy": "Never",
                 "wideColorGamut": false
             },
@@ -150,52 +150,7 @@
                 "sdrGamutWideness": 0,
                 "sharpness": 0,
                 "transform": "Rotated90",
-                "uuid": "f0106d12-00fa-423d-847c-d8188b621c5f",
-                "vrrPolicy": "Never",
-                "wideColorGamut": false
-            },
-            {
-                "allowDdcCi": true,
-                "allowSdrSoftwareBrightness": true,
-                "autoBrightnessCurve": [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
-                ],
-                "autoRotation": "InTabletMode",
-                "automaticBrightness": false,
-                "brightness": 1,
-                "colorPowerTradeoff": "PreferEfficiency",
-                "colorProfileSource": "sRGB",
-                "connectorName": "Virtual-virtual-xdp-kde-org.chromium.Chromium",
-                "customModes": [
-                ],
-                "detectedDdcCi": false,
-                "edrPolicy": "always",
-                "highDynamicRange": false,
-                "iccProfilePath": "",
-                "mode": {
-                    "flags": 1,
-                    "height": 1080,
-                    "refreshRate": 60000,
-                    "width": 1920
-                },
-                "overscan": 0,
-                "rgbRange": "Automatic",
-                "scale": 1,
-                "sdrBrightness": 200,
-                "sdrGamutWideness": 0,
-                "sharpness": 0,
-                "transform": "Normal",
-                "uuid": "1f7eda2a-c99b-4f0e-8858-3059837c3317",
+                "uuid": "6b43848c-0ca8-47f3-b7d2-25f7247ef6b6",
                 "vrrPolicy": "Never",
                 "wideColorGamut": false
             }
@@ -235,51 +190,6 @@
                             "y": 0
                         },
                         "priority": 3,
-                        "replicationSource": ""
-                    }
-                ]
-            },
-            {
-                "lidClosed": false,
-                "outputs": [
-                    {
-                        "enabled": true,
-                        "outputIndex": 0,
-                        "position": {
-                            "x": 1080,
-                            "y": 480
-                        },
-                        "priority": 1,
-                        "replicationSource": ""
-                    },
-                    {
-                        "enabled": true,
-                        "outputIndex": 1,
-                        "position": {
-                            "x": 4520,
-                            "y": 0
-                        },
-                        "priority": 2,
-                        "replicationSource": ""
-                    },
-                    {
-                        "enabled": true,
-                        "outputIndex": 2,
-                        "position": {
-                            "x": 0,
-                            "y": 0
-                        },
-                        "priority": 3,
-                        "replicationSource": ""
-                    },
-                    {
-                        "enabled": true,
-                        "outputIndex": 3,
-                        "position": {
-                            "x": 5600,
-                            "y": 0
-                        },
-                        "priority": 4,
                         "replicationSource": ""
                     }
                 ]
