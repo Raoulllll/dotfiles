@@ -4,7 +4,25 @@ RightButton;NoModifier=org.kde.contextmenu
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][1]
+[Containments][30]
+ItemGeometries-1920x1080=
+ItemGeometriesHorizontal=
+activityId=5d915a6a-bcc3-4e89-87cf-f4962500cfd2
+formfactor=0
+immutability=1
+lastScreen=1
+location=0
+plugin=org.kde.desktopcontainment
+wallpaperplugin=org.kde.image
+
+[Containments][30][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
+[Containments][30][Wallpaper][org.kde.image][General]
+SlidePaths=/home/roehl/.local/share/wallpapers/,/usr/share/wallpapers/
+
+[Containments][31]
 ItemGeometries-0x0=
 ItemGeometries-3440x1440=
 ItemGeometriesHorizontal=
@@ -13,21 +31,17 @@ formfactor=0
 immutability=1
 lastScreen=0
 location=0
-plugin=org.kde.plasma.folder
+plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
 
-[Containments][2]
-ItemGeometries-1920x1080=
-ItemGeometriesHorizontal=
-activityId=5d915a6a-bcc3-4e89-87cf-f4962500cfd2
-formfactor=0
-immutability=1
-lastScreen=1
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
+[Containments][31][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
 
-[Containments][3]
+[Containments][31][Wallpaper][org.kde.image][General]
+SlidePaths=/home/roehl/.local/share/wallpapers/,/usr/share/wallpapers/
+
+[Containments][32]
 ItemGeometries-1920x1080=
 ItemGeometriesHorizontal=
 activityId=5d915a6a-bcc3-4e89-87cf-f4962500cfd2
@@ -35,8 +49,15 @@ formfactor=0
 immutability=1
 lastScreen=2
 location=0
-plugin=org.kde.plasma.folder
+plugin=org.kde.desktopcontainment
 wallpaperplugin=org.kde.image
+
+[Containments][32][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
+[Containments][32][Wallpaper][org.kde.image][General]
+SlidePaths=/home/roehl/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][4]
 activityId=
@@ -70,8 +91,14 @@ plugin=org.kde.plasma.kickoff
 popupHeight=509
 popupWidth=685
 
+[Containments][4][Applets][5][Configuration][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
 [Containments][4][Applets][5][Configuration][General]
 favoritesPortedToKAstats=true
+icon=fedora-logo-icon
+systemFavorites=suspend\\,hibernate\\,reboot\\,shutdown
 
 [Containments][4][Applets][6]
 immutability=1
@@ -82,7 +109,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][4][Applets][7][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,applications:brave-browser.desktop,applications:steam.desktop,applications:com.spotify.Client.desktop,applications:kitty.desktop,applications:hydralauncher.desktop,applications:AUR--Locally Uncensored.desktop
+launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,applications:brave-browser.desktop,applications:steam.desktop,applications:com.spotify.Client.desktop,applications:kitty.desktop,applications:hydralauncher.desktop,applications:net.codelogistics.webapps.webapp_6b446b90_152a_45a1_a295_01b4fccde38d.desktop,applications:AUR--Locally Uncensored.desktop,applications:me.proton.Mail.desktop
 
 [Containments][4][Applets][8]
 immutability=1
@@ -185,5 +212,5 @@ knownItems=org.kde.kdeconnect,org.kde.plasma.vault,org.kde.kscreen,org.kde.plasm
 AppletOrder=5;6;7;8;9;24;25
 
 [ScreenMapping]
-itemsOnDisabledScreens=0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,23,desktop:/Music,desktop:/odyseus_install_note.sh,desktop:/immich-ml,desktop:/Desktop,desktop:/Pictures,desktop:/Public,desktop:/Android,desktop:/system_inventory.txt,desktop:/pkglist.txt,desktop:/Documents,desktop:/llama.cpp,desktop:/run_once_before_setup.sh,desktop:/odyseus_install_note.txt,desktop:/Videos,desktop:/Templates,desktop:/fedorabootstrap.sh,desktop:/setup_dotfiles.sh,desktop:/immich-transcoder,desktop:/ultramarine-migrate.log,desktop:/bin,desktop:/Downloads,desktop:/go,desktop:/game
-screenMapping=desktop:/Desktop,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Public,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Pictures,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Downloads,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/odyseus_install_note.sh,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/pkglist.txt,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/immich-transcoder,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Documents,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/ultramarine-migrate.log,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Videos,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/go,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Music,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/immich-ml,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/odyseus_install_note.txt,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Android,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/bin,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/setup_dotfiles.sh,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/fedorabootstrap.sh,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/system_inventory.txt,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/Templates,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/game,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/run_once_before_setup.sh,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,desktop:/llama.cpp,0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2
+itemsOnDisabledScreens=0,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,23,desktop:/setup_dotfiles.sh,desktop:/Public,desktop:/llama.cpp,desktop:/ultramarine-migrate.log,desktop:/immich-ml,desktop:/Templates,desktop:/system_inventory.txt,desktop:/game,desktop:/run_once_before_setup.sh,desktop:/Downloads,desktop:/odyseus_install_note.sh,desktop:/go,desktop:/Pictures,desktop:/Desktop,desktop:/Videos,desktop:/odyseus_install_note.txt,desktop:/immich-transcoder,desktop:/bin,desktop:/fedorabootstrap.sh,desktop:/Music,desktop:/Android,desktop:/pkglist.txt,desktop:/Documents,1,5d915a6a-bcc3-4e89-87cf-f4962500cfd2,14,desktop:/AppImages,desktop:/Github,desktop:/paru-build,desktop:/guix-system-install-1.3.0.x86_64-linux.iso,desktop:/x64,desktop:/Applications,desktop:/Games,desktop:/Fedora-Everything-netinst-x86_64-43-1.6.iso,desktop:/ComfyUI,desktop:/progress.txt,desktop:/steam-0.log,desktop:/translate.py,desktop:/winboat,desktop:/Screenshots
+screenMapping=

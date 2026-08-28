@@ -21,7 +21,7 @@
                 "autoRotation": "InTabletMode",
                 "automaticBrightness": false,
                 "brightness": 1,
-                "colorPowerTradeoff": "PreferEfficiency",
+                "colorPowerTradeoff": "PreferAccuracy",
                 "colorProfileSource": "sRGB",
                 "connectorName": "DP-1",
                 "customModes": [
