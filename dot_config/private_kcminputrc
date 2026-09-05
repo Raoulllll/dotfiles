@@ -2,4 +2,5 @@
 NumLock=0
 
 [Libinput][1356][3302][Sony Interactive Entertainment DualSense Wireless Controller Touchpad]
+DisableEventsOnExternalMouse=true
 Enabled=false
