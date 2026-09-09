@@ -109,7 +109,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][4][Applets][7][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,applications:brave-browser.desktop,applications:steam.desktop,applications:com.spotify.Client.desktop,applications:kitty.desktop,applications:hydralauncher.desktop,applications:net.codelogistics.webapps.webapp_6b446b90_152a_45a1_a295_01b4fccde38d.desktop,applications:AUR--Locally Uncensored.desktop,applications:me.proton.Mail.desktop
+launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,applications:brave-browser.desktop,applications:steam.desktop,applications:com.spotify.Client.desktop,applications:kitty.desktop,applications:hydralauncher.desktop,applications:AUR--Locally Uncensored.desktop,applications:proton-mail.desktop
 
 [Containments][4][Applets][8]
 immutability=1
