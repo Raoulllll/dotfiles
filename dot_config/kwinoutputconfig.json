@@ -23,7 +23,7 @@
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferAccuracy",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-1",
+                "connectorName": "DP-3",
                 "customModes": [
                 ],
                 "detectedDdcCi": true,
@@ -74,7 +74,7 @@
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-2",
+                "connectorName": "DP-1",
                 "customModes": [
                 ],
                 "detectedDdcCi": true,
@@ -125,7 +125,7 @@
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-3",
+                "connectorName": "DP-2",
                 "customModes": [
                 ],
                 "detectedDdcCi": true,
