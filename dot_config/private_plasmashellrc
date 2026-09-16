@@ -1,12 +1,25 @@
+[General]
+Number of Actions=0
+
+[PlasmaViews][Panel 34]
+alignment=2
+floating=0
+panelLengthMode=1
+shell=org.kde.plasma.desktop
+
+[PlasmaViews][Panel 34][Defaults]
+thickness=36
+
 [PlasmaViews][Panel 4]
-floating=1
-panelLengthMode=2
+floating=0
+panelLengthMode=1
+panelOpacity=1
 shell=org.kde.plasma.desktop
 
 [PlasmaViews][Panel 4][Defaults]
 maxLength=3360
 minLength=3360
-thickness=46
+thickness=50
 
 [PlasmaViews][Panel 4][Horizontal3440]
 alignment=132

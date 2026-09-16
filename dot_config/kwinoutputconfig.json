@@ -36,7 +36,7 @@
                 "iccProfilePath": "",
                 "maxBitsPerColor": 0,
                 "mode": {
-                    "flags": 0,
+                    "flags": 1,
                     "height": 1440,
                     "refreshRate": 175000,
                     "width": 3440
