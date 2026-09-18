@@ -83,7 +83,9 @@ abbr -a clean 'nh clean all'
 
 ### 4. GREETING
 set -g fish_greeting ""
-fastfetch
+if status is-interactive
+    fastfetch
+end
 
 # SSH Agent automatisch starten
 if not set -q SSH_AUTH_SOCK
