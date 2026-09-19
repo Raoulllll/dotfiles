@@ -100,3 +100,5 @@ if status is-interactive
         ssh-add ~/.ssh/id_ed25519 2>/dev/null
     end
 end
+set -gx EDITOR micro
+set -gx VISUAL micro
