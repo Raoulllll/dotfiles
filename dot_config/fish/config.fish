@@ -102,3 +102,5 @@ if status is-interactive
 end
 set -gx EDITOR micro
 set -gx VISUAL micro
+/home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+/home/linuxbrew/.linuxbrew/bin/brew shellenv | source
