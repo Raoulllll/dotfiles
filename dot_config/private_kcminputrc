@@ -1,5 +1,6 @@
 [Keyboard]
 NumLock=0
+RepeatDelay=900
 
 [Libinput][1356][3302][DualSense Wireless Controller Touchpad]
 Enabled=false
