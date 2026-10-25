@@ -343,7 +343,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][4][Applets][7][Configuration][General]
-launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,applications:brave-browser.desktop,applications:proton-mail.desktop,applications:steam.desktop,applications:com.spotify.Client.desktop,applications:kitty.desktop,applications:hydralauncher.desktop,applications:AUR--Locally Uncensored.desktop,applications:Ubuntu-com.anthropic.Claude.desktop,applications:brave-fnnddiokljlbkmeppnclajginnfbffgb-Default.desktop,applications:openclaw.desktop,applications:dev.zed.Zed.desktop,applications:dev.vencord.Vesktop.desktop,file:///var/lib/flatpak/exports/share/applications/com.bambulab.BambuStudio.desktop,file:///var/lib/flatpak/exports/share/applications/com.moonlight_stream.Moonlight.desktop
+launchers=applications:systemsettings.desktop,applications:org.kde.discover.desktop,preferred://filemanager,applications:brave-browser.desktop,applications:proton-mail.desktop,applications:steam.desktop,applications:com.spotify.Client.desktop,applications:kitty.desktop,applications:hydralauncher.desktop,applications:AUR--Locally Uncensored.desktop,applications:Ubuntu-com.anthropic.Claude.desktop,applications:brave-fnnddiokljlbkmeppnclajginnfbffgb-Default.desktop,applications:openclaw.desktop,applications:dev.zed.Zed.desktop,applications:dev.vencord.Vesktop.desktop,file:///var/lib/flatpak/exports/share/applications/com.bambulab.BambuStudio.desktop,file:///var/lib/flatpak/exports/share/applications/com.moonlight_stream.Moonlight.desktop,applications:brave-khbealoomgpchipcobjafkibdiadodeh-Default.desktop
 
 [Containments][4][Applets][9][Applets][14]
 immutability=1
