@@ -23,7 +23,7 @@
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferAccuracy",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-3",
+                "connectorName": "DP-2",
                 "customModes": [
                 ],
                 "detectedDdcCi": true,
@@ -74,7 +74,7 @@
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-1",
+                "connectorName": "DP-3",
                 "customModes": [
                 ],
                 "detectedDdcCi": true,
@@ -125,7 +125,7 @@
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "DP-2",
+                "connectorName": "DP-1",
                 "customModes": [
                 ],
                 "detectedDdcCi": true,
@@ -139,9 +139,9 @@
                 "maxBitsPerColor": 0,
                 "mode": {
                     "flags": 0,
-                    "height": 1080,
-                    "refreshRate": 165003,
-                    "width": 1920
+                    "height": 1024,
+                    "refreshRate": 60020,
+                    "width": 1280
                 },
                 "overscan": 0,
                 "rgbRange": "Automatic",
@@ -215,6 +215,31 @@
                             "y": 0
                         },
                         "priority": 2,
+                        "replicationSource": ""
+                    }
+                ]
+            },
+            {
+                "lidClosed": false,
+                "outputs": [
+                    {
+                        "enabled": true,
+                        "outputIndex": 2,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": 0,
+                        "replicationSource": ""
+                    },
+                    {
+                        "enabled": true,
+                        "outputIndex": 0,
+                        "position": {
+                            "x": 1024,
+                            "y": 0
+                        },
+                        "priority": 1,
                         "replicationSource": ""
                     }
                 ]
