@@ -139,9 +139,9 @@
                 "maxBitsPerColor": 0,
                 "mode": {
                     "flags": 0,
-                    "height": 1024,
-                    "refreshRate": 60020,
-                    "width": 1280
+                    "height": 1080,
+                    "refreshRate": 165003,
+                    "width": 1920
                 },
                 "overscan": 0,
                 "rgbRange": "Automatic",
