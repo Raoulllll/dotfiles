@@ -1,0 +1,3 @@
+# Not dotfiles: keep these in the repo but never apply them to $HOME
+archive
+README.md
