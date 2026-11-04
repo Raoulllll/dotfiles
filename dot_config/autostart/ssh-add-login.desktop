@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=SSH keys (KWallet)
+Comment=Load the SSH keys into the agent with passphrases from KWallet
+Exec=/home/roehl/.local/bin/ssh-add-login
+X-KDE-autostart-phase=2
+NoDisplay=true

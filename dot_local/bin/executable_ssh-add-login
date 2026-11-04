@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Load the SSH keys into Fedora's ssh-agent right after login, so automatic jobs (cz-sync.timer) can push.
+# ksshaskpass asks for each passphrase once and offers "Remember password" -> stored in KWallet,
+# which opens with the login password; from then on this runs silently at every login.
+export SSH_AUTH_SOCK="${SSH_AUTH_SOCK:-$XDG_RUNTIME_DIR/ssh-agent.socket}"
+export SSH_ASKPASS=/usr/bin/ksshaskpass SSH_ASKPASS_REQUIRE=force
+for k in "$HOME/.ssh/id_ed25519" "$HOME/.ssh/id_chezmoi"; do
+  [ -f "$k" ] || continue
+  ssh-add -l 2>/dev/null | grep -q "$(ssh-keygen -lf "$k.pub" | awk '{print $2}')" && continue
+  ssh-add -q "$k" </dev/null || echo "ssh-add-login: $k not loaded" >&2
+done
