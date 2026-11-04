@@ -619,4 +619,5 @@ ydotool
 zed
 zellij
 zip
+zoxide
 zstd
