@@ -1,15 +1,75 @@
-# Not dotfiles: keep these in the repo but never apply them to $HOME
+# chezmoi ignore rules: which file goes on which device. Paths are target paths in $HOME.
+# Devices: main-pc (hostname LinuxV6, Fedora KDE), laptop (Fedora KDE), Mac Studio (macOS, zsh).
+
+# --- Never applied anywhere: repo files and generated lists ---
 archive
 README.md
 bootstrap.sh
 fedorabootstrap.sh
+hosts
 pkglist.txt
 flatpaks.txt
 Brewfile
 distrobox.ini
 ollama-models.txt
 
-# Monitor layout of main-pc (hostname LinuxV6) only
-{{ if ne .chezmoi.hostname "LinuxV6" }}
+# --- Never tracked (also do not add them): logs, backups, secrets ---
+**/logs
+**/*.log
+**/*.bak
+.local/bin/unlock-pc.sh
+.local/bin/cider-wrapper
+
+{{ if ne .chezmoi.os "darwin" }}
+# --- macOS only ---
+.zshrc
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+# --- Linux only (Fedora, KDE, Hyprland, systemd, PipeWire) ---
+.config/Kvantum
+.config/autostart
+.config/brave-flags.conf
+.config/caelestia
+.config/dolphinrc
+.config/environment.d
+.config/fontconfig
+.config/gtk-3.0
+.config/gtk-4.0
+.config/hypr
+.config/kcminputrc
+.config/kdeglobals
+.config/kglobalshortcutsrc
+.config/klipperrc
+.config/konsolerc
+.config/krunnerrc
+.config/ksmserverrc
 .config/kwinoutputconfig.json
+.config/kwinrc
+.config/kwinrulesrc
+.config/libinput-gestures.conf
+.config/mimeapps.list
+.config/pipewire
+.config/plasma-localerc
+.config/plasma-org.kde.plasma.desktop-appletsrc
+.config/plasmanotifyrc
+.config/plasmashellrc
+.config/powerdevilrc
+.config/solaar
+.config/spectaclerc
+.config/systemd
+.config/user-dirs.dirs
+.config/wireplumber
+.local/bin/*
+!.local/bin/cz-sync.sh
+!.local/bin/fetch-layout
+{{ end }}
+
+{{ if ne .chezmoi.hostname "LinuxV6" }}
+# --- main-pc only: its monitors, GPU, RGB, autostart apps ---
+.config/kwinoutputconfig.json
+.config/lact
+.config/OpenRGB
+.config/autostart
+.local/bin/steam-gamescope-wrapper
 {{ end }}

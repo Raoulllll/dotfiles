@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Automatically inject Gamescope specs and performance layers onto game binaries
+exec gamescope -W 2560 -H 1440 -r 175 -f -- %command% "$@"

@@ -4,7 +4,9 @@ starship init fish | source
 
 # --- ENVIRONMENT SETTINGS ---
 # Automatically route all Steam game launches through your local Gamescope wrapper
-set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/steam-gamescope-wrapper"
+if test -x "$HOME/.local/bin/steam-gamescope-wrapper"
+    set -gx STEAM_COMPAT_INVOKER "$HOME/.local/bin/steam-gamescope-wrapper"
+end
 
 ### 1. PATH & INITIALIZATION
 fish_add_path -m ~/.local/bin
@@ -18,19 +20,35 @@ end
 # These replace commands or add complex behavior
 
 function ls --description "Alias for eza"
-    eza --icons --grid --group-directories-first $argv
+    if command -q eza
+        eza --icons --grid --group-directories-first $argv
+    else
+        command ls $argv
+    end
 end
 
 function ll --description "Detailed list"
-    eza --icons --long --header --git --group-directories-first $argv
+    if command -q eza
+        eza --icons --long --header --git --group-directories-first $argv
+    else
+        command ls $argv
+    end
 end
 
 function la --description "List all"
-    eza --icons --long --header --all --git --group-directories-first $argv
+    if command -q eza
+        eza --icons --long --header --all --git --group-directories-first $argv
+    else
+        command ls $argv
+    end
 end
 
 function tree --description "Folder tree"
-    eza --icons --tree --level=3 --group-directories-first $argv
+    if command -q eza
+        eza --icons --tree --level=3 --group-directories-first $argv
+    else
+        command tree $argv
+    end
 end
 
 function nano
@@ -75,7 +93,7 @@ abbr -a backup '~/.local/bin/cz-sync.sh'
 
 ### 4. GREETING
 set -g fish_greeting ""
-if status is-interactive
+if status is-interactive; and command -q fastfetch
     fastfetch
 end
 
@@ -92,4 +110,9 @@ if status is-interactive
 end
 set -gx EDITOR micro
 set -gx VISUAL micro
-/home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+for brew in /home/linuxbrew/.linuxbrew/bin/brew /opt/homebrew/bin/brew
+    if test -x $brew
+        $brew shellenv | source
+        break
+    end
+end

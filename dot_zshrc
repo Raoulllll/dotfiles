@@ -1,0 +1,14 @@
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/roehl/.lmstudio/bin"
+# End of LM Studio CLI section
+
+eval "$(starship init zsh)"
+
+# Show fastfetch only on SSH logins
+if [[ -n "$SSH_CONNECTION" ]]; then
+  fastfetch
+fi
+
+alias top='btop'
+alias gpu='macmon'

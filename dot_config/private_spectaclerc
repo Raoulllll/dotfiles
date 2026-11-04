@@ -1,0 +1,16 @@
+[Annotations]
+annotationToolType=7
+
+[ImageSave]
+imageSaveLocation=file:///home/roehl/Pictures/Screenshots/
+lastImageSaveAsLocation=file:///home/roehl/Pictures/1 GPU Cyberpunk.png
+lastImageSaveLocation=file:///home/roehl/Pictures/Screenshots/Screenshot_20261022_183654.png
+translatedScreenshotsFolder=Screenshots
+
+[VideoSave]
+translatedScreencastsFolder=Screencasts
+
+[ViewerWindow]
+3 screens: Height=570
+3 screens: Width=989
+3 screens: Window-Maximized=true

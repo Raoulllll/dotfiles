@@ -1,0 +1,35 @@
+- 1.1.19
+- _NAME: G502 X PLUS
+  _absent: [hi-res-scroll, lowres-scroll-mode, scroll-ratchet, scroll-ratchet-torque, smart-shift, thumb-scroll-invert, thumb-scroll-mode, report_rate_extended,
+    pointer_speed, dpi_extended, speed-change, backlight, backlight_level, backlight_duration_hands_out, backlight_duration_hands_in, backlight_duration_powered,
+    backlight-timed, led_control, led_zone_, brightness_control, fn-swap, reprogrammable-keys, persistent-remappable-keys, divert-keys, disable-keyboard-keys,
+    force-sensing, crown-smooth, divert-crown, divert-gkeys, m-key-leds, mr-key-led, multiplatform, change-host, gesture2-gestures, gesture2-divert, gesture2-params,
+    haptic-level, haptic-play, sidetone, equalizer, adc_power_management]
+  _battery: 4100
+  _modelId: 4099C0950000
+  _sensitive: {hires-smooth-invert: true, rgb_control: false, rgb_zone_1: true}
+  _serial: F4AC3D67
+  _unitId: F4AC3D67
+  _wpid: '4099'
+  dpi: 1600
+  hires-scroll-mode: false
+  hires-smooth-invert: false
+  hires-smooth-resolution: true
+  onboard_profiles: 2
+  per-key-lighting: {1: -1, 2: -1, 3: -1, 4: -1, 5: -1, 6: -1, 7: -1, 8: -1}
+  report_rate: 2
+  rgb_control: 0
+  rgb_zone_1: !LEDEffectSetting {ID: 1, color: 14687012, intensity: 53, period: 3673, ramp: 2, speed: 0}
+- _NAME: G915 X LS
+  _absent: [hi-res-scroll, lowres-scroll-mode, hires-smooth-invert, hires-smooth-resolution, hires-scroll-mode, scroll-ratchet, scroll-ratchet-torque, smart-shift,
+    thumb-scroll-invert, thumb-scroll-mode, onboard_profiles, report_rate, report_rate_extended, pointer_speed, dpi, dpi_extended, speed-change, backlight,
+    backlight_level, backlight_duration_hands_out, backlight_duration_hands_in, backlight_duration_powered, backlight-timed, led_control, led_zone_, fn-swap,
+    reprogrammable-keys, persistent-remappable-keys, divert-keys, disable-keyboard-keys, force-sensing, crown-smooth, divert-crown, divert-gkeys, m-key-leds,
+    mr-key-led, multiplatform, change-host, gesture2-gestures, gesture2-divert, gesture2-params, haptic-level, haptic-play, sidetone, equalizer, adc_power_management]
+  _battery: 4100
+  _modelId: B38A40B5C356
+  _serial: 65FDD0B2
+  _unitId: 65FDD0B2
+  _wpid: 40B5
+  brightness_control: 13
+  rgb_control: 0

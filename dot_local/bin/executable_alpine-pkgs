@@ -1,0 +1,36 @@
+#!/bin/sh
+CACHE_FILE="$HOME/.cache/distrobox-pkg-counts"
+TMP_FILE="/tmp/distrobox-counts.tmp"
+
+mkdir -p "$(dirname "$CACHE_FILE")"
+true > "$TMP_FILE"
+
+get_count() {
+    box="$1"
+    type="$2"
+
+    # --no-tty forces non-interactive mode so systemd won't block it
+    case "$type" in
+        apk)    distrobox enter --no-tty "$box" -- apk info 2>/dev/null | wc -l ;;
+        dpkg)   distrobox enter --no-tty "$box" -- dpkg -l 2>/dev/null | grep -c '^ii' ;;
+        pacman) distrobox enter --no-tty "$box" -- pacman -Q 2>/dev/null | wc -l ;;
+        rpm)    distrobox enter --no-tty "$box" -- rpm -qa 2>/dev/null | wc -l ;;
+        *)      echo "0" ;;
+    esac
+}
+
+# Fetch counts dynamically through the distrobox wrapper
+ALPINE_COUNT=$(get_count alpine-box apk)
+DAVINCI_COUNT=$(get_count davincibox rpm)
+UBUNTU_COUNT=$(get_count Ubuntu-24.04 dpkg)
+ARCH_COUNT=$(get_count arch-sandbox pacman)
+DEBIAN_COUNT=$(get_count debian-sid dpkg)
+
+# Write to the cache file cleanly
+printf "alpine-box: %s\n" "$ALPINE_COUNT" > "$TMP_FILE"
+printf "davincibox: %s\n" "$DAVINCI_COUNT" >> "$TMP_FILE"
+printf "Ubuntu-24.04: %s\n" "$UBUNTU_COUNT" >> "$TMP_FILE"
+printf "arch-sandbox: %s\n" "$ARCH_COUNT" >> "$TMP_FILE"
+printf "debian-sid: %s\n" "$DEBIAN_COUNT" >> "$TMP_FILE"
+
+mv "$TMP_FILE" "$CACHE_FILE"

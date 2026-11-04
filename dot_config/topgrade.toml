@@ -1,5 +1,5 @@
 [commands]
-"System Configuration Backup" = "sh /home/roehl/.local/bin/cz-sync.sh"
+"System Configuration Backup" = "$HOME/.local/bin/cz-sync.sh"
 
 
 

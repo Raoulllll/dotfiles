@@ -1,0 +1,10 @@
+[Plugins]
+browserhistoryEnabled=false
+browsertabsEnabled=false
+krunner_colorsEnabled=false
+krunner_dictionaryEnabled=false
+krunner_webshortcutsEnabled=false
+org.kde.datetimeEnabled=false
+
+[Plugins][Favorites]
+plugins=krunner_sessions,krunner_powerdevil,krunner_services,krunner_systemsettings

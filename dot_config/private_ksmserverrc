@@ -1,0 +1,10 @@
+[General]
+confirmLogout=false
+excludeApps=plasma-systemmonitor
+loginMode=restoreSavedSession
+
+[LegacySession: saved by user]
+count=0
+
+[Session: saved by user]
+count=0
