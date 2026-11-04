@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/roehl/.config/old-autostart-scripts/start-ydotool.sh
+Icon=application-x-executable-script
+Name=start-ydotool.sh
+Type=Application
+X-KDE-AutostartScript=true

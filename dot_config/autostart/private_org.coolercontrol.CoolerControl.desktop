@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Monitor and control your cooling device
+Exec=coolercontrol
+Icon=org.coolercontrol.CoolerControl
+Keywords=cooling;fan control;pump control
+Name=CoolerControl
+StartupNotify=true
+StartupWMClass=org.coolercontrol.CoolerControl
+Terminal=false
+Type=Application
+X-Desktop-File-Install-Version=0.28

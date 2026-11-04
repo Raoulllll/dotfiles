@@ -1,3 +1,15 @@
 # Not dotfiles: keep these in the repo but never apply them to $HOME
 archive
 README.md
+bootstrap.sh
+fedorabootstrap.sh
+pkglist.txt
+flatpaks.txt
+Brewfile
+distrobox.ini
+ollama-models.txt
+
+# Monitor layout of main-pc (hostname LinuxV6) only
+{{ if ne .chezmoi.hostname "LinuxV6" }}
+.config/kwinoutputconfig.json
+{{ end }}

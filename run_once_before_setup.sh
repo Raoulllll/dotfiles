@@ -7,7 +7,7 @@ if command -v gh &> /dev/null; then
     # Check if we are already logged in
     if ! gh auth status &>/dev/null; then
         echo "Hold up! We need to authenticate with GitHub so you can push updates later."
-        gh auth login -p https -w
+        gh auth login -p ssh -w
     else
         echo "GitHub CLI is already authenticated."
     fi
@@ -16,5 +16,5 @@ if command -v gh &> /dev/null; then
     git config --global credential.helper "!gh auth git-credential"
     echo "Git credential helper configured."
 else
-    echo "Warning: GitHub CLI (gh) is not installed. Please add it to your configuration.nix!"
+    echo "Warning: GitHub CLI (gh) is not installed. Install it with: sudo dnf install gh"
 fi

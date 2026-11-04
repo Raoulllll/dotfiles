@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Feed 3440x1440 to both the internal render engine and the physical Wayland output
+exec gamescope -w 3440 -h 1440 -W 3440 -H 1440 -r 175 -f -- %command% "$@"

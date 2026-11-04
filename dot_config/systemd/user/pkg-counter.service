@@ -1,0 +1,9 @@
+[Unit]
+Description=Distrobox Package Counter
+
+[Service]
+Type=oneshot
+ExecStart=/home/roehl/.local/bin/distrobox-pkg-counter.sh
+
+[Install]
+WantedBy=default.target

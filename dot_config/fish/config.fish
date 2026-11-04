@@ -1,4 +1,3 @@
-#source /usr/share/cachyos-fish-config/cachyos-config.fish
 
 # Initialize starship
 starship init fish | source
@@ -53,12 +52,6 @@ function fish_user_key_bindings
     bind \cl 'clear; ~/.local/bin/fetch-layout; commandline -f repaint'
 end
 
-function nixin
-    pushd ~/nix-config
-    # We add .#roehl to tell Home Manager which configuration to use
-    nix run github:nix-community/home-manager -- switch --flake .#roehl
-    popd
-end
 
 ### 3. ABBREVIATIONS (The "Shortcuts")
 # Navigation
@@ -79,7 +72,6 @@ abbr -a mfish 'micro ~/.config/fish/config.fish'
 abbr -a top   'btop'
 abbr -a logs  'journalctl -p 3 -xb'
 abbr -a backup '~/.local/bin/cz-sync.sh'
-abbr -a clean 'nh clean all'
 
 ### 4. GREETING
 set -g fish_greeting ""
@@ -87,11 +79,9 @@ if status is-interactive
     fastfetch
 end
 
-# SSH Agent automatisch starten
-if not set -q SSH_AUTH_SOCK
-    eval (ssh-agent -c)
-    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+# SSH agent: Fedora's systemd user socket (ssh-agent.socket), also set in ~/.config/environment.d/sshagent.conf
+if not test -S "$SSH_AUTH_SOCK"
+    set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
 end
 
 # Schlüssel beim ersten Start automatisch laden
@@ -102,5 +92,4 @@ if status is-interactive
 end
 set -gx EDITOR micro
 set -gx VISUAL micro
-/home/linuxbrew/.linuxbrew/bin/brew shellenv | source
 /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
