@@ -17,8 +17,6 @@ ollama-models.txt
 **/logs
 **/*.log
 **/*.bak
-.local/bin/unlock-pc.sh
-.local/bin/cider-wrapper
 
 {{ if ne .chezmoi.os "darwin" }}
 # --- macOS only ---

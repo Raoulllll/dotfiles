@@ -31,7 +31,7 @@ function ll --description "Detailed list"
     if command -q eza
         eza --icons --long --header --git --group-directories-first $argv
     else
-        command ls $argv
+        command ls -lh $argv
     end
 end
 
@@ -39,7 +39,7 @@ function la --description "List all"
     if command -q eza
         eza --icons --long --header --all --git --group-directories-first $argv
     else
-        command ls $argv
+        command ls -lah $argv
     end
 end
 
@@ -75,7 +75,7 @@ end
 # Navigation
 abbr -a home 'cd ~'
 abbr -a conf 'cd ~/.config'
-abbr -a scripts 'cd ~/scripts'
+abbr -a scripts 'cd ~/.local/bin'
 abbr -a vault 'cd ~/Vault'
 abbr -a big 'cd /mnt/BIG'
 abbr -a root 'cd /'

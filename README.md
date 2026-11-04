@@ -47,7 +47,7 @@ Changes: edit the file in `$HOME`, then `chezmoi re-add` (or run `cz-sync.sh`), 
 ## Never tracked (this repo is public)
 
 - `~/.ssh` (keys and host list), passwords, tokens, API keys, `.env` files
-- `~/.local/bin/unlock-pc.sh` (contains a password), `~/.local/bin/cider-wrapper` (contains a token)
+- Any script that contains a password or token
 - Logs, `*.bak`, caches, app state (browsers, mail, akonadi, baloo, kwallet, recent files)
 - Tools installed by pip/uv into `~/.local/bin` (pip, httpx, pytest, …), binaries, AppImages, symlinks
 - `~/.local/bin/export_packages.sh` (old Arch/pacman script; replaced by `cz-sync.sh`) and the dwm/X11 scripts (`dwm-*`, `theme-apply.sh`, `xscreensaver-setup.sh`)
