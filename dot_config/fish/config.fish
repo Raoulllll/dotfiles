@@ -105,7 +105,8 @@ end
 # Schlüssel beim ersten Start automatisch laden
 if status is-interactive
     if not ssh-add -l > /dev/null 2>&1
-        ssh-add ~/.ssh/id_ed25519 2>/dev/null
+        # asks once per login for the passphrases (id_ed25519: servers + Forgejo, id_chezmoi: GitHub)
+        ssh-add ~/.ssh/id_ed25519 ~/.ssh/id_chezmoi
     end
 end
 set -gx EDITOR micro
