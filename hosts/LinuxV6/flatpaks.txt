@@ -1,3 +1,4 @@
+ai.lmstudio.lm-studio
 ca.littlesvr.asunder
 ch.threema.threema-desktop
 com.bambulab.BambuStudio

@@ -1,2 +1,2 @@
-gpt-oss:120b
-hf.co/nohurry/gemma-4-26B-A4B-it-heretic-GUFF:Q4_K_M
+l-uncensored:26b
+l-research:27b
