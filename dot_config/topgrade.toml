@@ -1,10 +1,12 @@
-[commands]
-"System Configuration Backup" = "$HOME/.local/bin/cz-sync.sh"
-
-
-
 [misc]
-# We disable these because we are handling them via your custom scripts above
-disable = ["firmware", "nix", "containers", "spicetify", "chezmoi"]
 display_time = true
 assume_yes = true
+no_retry = true
+disable = [
+  "firmware", "nix", "containers", "spicetify", "chezmoi",
+  "waydroid",     # parser bug in topgrade 17.15.0, fails every run
+  "toolbx",       # empty, you use distrobox
+  "pip3",         # only updates pip itself, you use uv/pipx
+  "pipx",         # nothing installed
+  "tailscale",    # extra sudo prompt, does nothing
+]
