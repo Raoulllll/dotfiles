@@ -598,6 +598,7 @@ vlc-plugin-gstreamer
 vlc-plugins-freeworld
 vulkan-headers
 waydroid
+wev
 wget2-wget
 which
 whipper
