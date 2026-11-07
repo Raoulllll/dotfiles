@@ -30,8 +30,8 @@
       "type": "custom",
       "format": "\u001b[94m┌──────────────────────System────────────────────────┐",
     },
-    { "type": "os", "key": "│ {#cyan}{{- if eq .chezmoi.os "darwin" }}{{- else if eq .chezmoi.osRelease.id "ubuntu" }}{{- else if eq .chezmoi.osRelease.id "debian" }}{{- else if eq .chezmoi.osRelease.id "fedora" }}{{- else }}{{- end }} OS" },
-    { "type": "kernel", "key": "│ ├⚙️ Kernel" },
+    { "type": "command", "key": "│ {#cyan}{{- if eq .chezmoi.os "darwin" }}{{- else if eq .chezmoi.osRelease.id "ubuntu" }}{{- else if eq .chezmoi.osRelease.id "debian" }}{{- else if eq .chezmoi.osRelease.id "fedora" }}{{- else }}{{- end }} OS", "text": "if [ -r /etc/os-release ]; then . /etc/os-release; echo \"$NAME $VERSION_ID\" | sed -E 's# (GNU/)?Linux##'; else echo \"$(sw_vers -productName) $(sw_vers -productVersion)\"; fi" },  // only name + release, e.g. Fedora 44
+    { "type": "command", "key": "│ ├⚙️ Kernel", "text": "uname -r | sed -E 's/[-+].*//'" },  // only the version, e.g. 7.3.1
     { "type": "uptime", "key": "│ ├󱎫 Uptime" },
     {
       "type": "packages",
