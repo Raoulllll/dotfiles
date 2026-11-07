@@ -22,7 +22,6 @@ bindkey -e                 # emacs keys like bash (Ctrl+A, Ctrl+E, Ctrl+R, …)
 # --- Mac: Homebrew and LM Studio on the PATH
 if [[ "$OSTYPE" == darwin* ]]; then
   [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
-  [[ -d "$HOME/.lmstudio/bin" ]] && export PATH="$PATH:$HOME/.lmstudio/bin"
 fi
 [[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
@@ -81,3 +80,7 @@ for _p in /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh /opt/ho
   [[ -r $_p ]] && { source $_p; break; }
 done
 unset _p
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/roehl/.lmstudio/bin"
+# End of LM Studio CLI section
