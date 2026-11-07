@@ -1,11 +1,17 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "logo": {
+{{- if eq .chezmoi.hostname "LinuxV6" }}
+    // main-pc: own ASCII art
     "source": "~/.config/fastfetch/my_art.txt",
     "color": {
       "1": "cyan",
       "2": "magenta",
     },
+{{- else }}
+    // every other machine: the logo of its own system (macOS, Ubuntu, Debian, …)
+    "type": "auto",
+{{- end }}
   },
   "display": {
     "separator": " ➜  ",
@@ -23,7 +29,7 @@
       "type": "custom",
       "format": "\u001b[94m┌──────────────────────System────────────────────────┐",
     },
-    { "type": "os", "key": "│ {#cyan}󰣇 OS" },
+    { "type": "os", "key": "│ {#cyan}{{- if eq .chezmoi.os "darwin" }}{{- else if eq .chezmoi.osRelease.id "ubuntu" }}{{- else if eq .chezmoi.osRelease.id "debian" }}{{- else if eq .chezmoi.osRelease.id "fedora" }}{{- else }}{{- end }} OS" },
     { "type": "kernel", "key": "│ ├⚙️ Kernel" },
     { "type": "uptime", "key": "│ ├󱎫 Uptime" },
     {

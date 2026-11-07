@@ -1,5 +1,7 @@
 # chezmoi ignore rules: which file goes on which device. Paths are target paths in $HOME.
-# Devices: main-pc (hostname LinuxV6, Fedora KDE), laptop (Fedora KDE), Mac Studio (macOS, zsh).
+# Devices: main-pc (hostname LinuxV6, Fedora KDE), laptop (Fedora KDE), Mac Studio (macOS, zsh),
+# servers ubuntu, pie, immich-pi (zsh, starship, fastfetch, micro, btop, git only).
+{{- $server := has .chezmoi.hostname (list "ubuntu" "pie" "immich-pi") }}
 
 # --- Never applied anywhere: repo files and generated lists ---
 archive
@@ -18,13 +20,13 @@ ollama-models.txt
 **/*.log
 **/*.bak
 
-{{ if ne .chezmoi.os "darwin" }}
-# --- macOS only ---
+{{ if not (or (eq .chezmoi.os "darwin") $server) }}
+# --- zsh: Mac and servers only (main-pc and laptop use fish) ---
 .zshrc
 {{ end }}
 
-{{ if ne .chezmoi.os "linux" }}
-# --- Linux only (Fedora, KDE, Hyprland, systemd, PipeWire) ---
+{{ if or (ne .chezmoi.os "linux") $server }}
+# --- Linux desktops only (Fedora, KDE, Hyprland, systemd, PipeWire): not on the Mac, not on the servers ---
 .config/Kvantum
 .config/autostart
 .config/brave-flags.conf
@@ -59,8 +61,10 @@ ollama-models.txt
 .config/user-dirs.dirs
 .config/wireplumber
 .local/bin/*
+{{- if not $server }}
 !.local/bin/cz-sync.sh
 !.local/bin/fetch-layout
+{{- end }}
 {{ end }}
 
 {{ if ne .chezmoi.hostname "LinuxV6" }}
@@ -70,4 +74,15 @@ ollama-models.txt
 .config/OpenRGB
 .config/autostart
 .local/bin/steam-gamescope-wrapper
+{{ end }}
+
+{{ if $server }}
+# --- servers: no desktop app configs (they get .zshrc, starship, fastfetch, micro, btop, .gitconfig) ---
+.config/fish
+.config/kitty
+.config/zed
+.config/topgrade.toml
+.config/htop
+.config/OpenRGB
+.config/lact
 {{ end }}

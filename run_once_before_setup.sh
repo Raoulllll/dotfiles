@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# servers only pull the dotfiles (read-only), they need no GitHub login
+case "$(hostname -s)" in ubuntu|pie|immich-pi) exit 0 ;; esac
+
 echo "Starting First-Time Setup..."
 
 # Ensure GitHub CLI is actually installed before trying to use it

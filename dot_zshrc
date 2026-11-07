@@ -1,14 +1,83 @@
+# zsh for every machine that uses it: Mac Studio and the servers (ubuntu, pie, immich-pi). Managed by chezmoi.
+# OS-specific parts check the system at run time. Local extras per machine: ~/.zshrc.local (not in chezmoi)
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/roehl/.lmstudio/bin"
-# End of LM Studio CLI section
-
-eval "$(starship init zsh)"
-
-# Show fastfetch only on SSH logins
-if [[ -n "$SSH_CONNECTION" ]]; then
+# --- System overview: only on SSH logins, once (not in nested shells or without a terminal)
+if [[ -o interactive && -t 1 && -n "$SSH_CONNECTION" && -z "$FASTFETCH_SHOWN" ]] && command -v fastfetch >/dev/null; then
+  export FASTFETCH_SHOWN=1
   fastfetch
 fi
 
-alias top='btop'
-alias gpu='macmon'
+# --- History: big, shared between open sessions, with timestamps
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt EXTENDED_HISTORY INC_APPEND_HISTORY SHARE_HISTORY
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS HIST_VERIFY
+
+# --- Behave close to bash
+setopt INTERACTIVE_COMMENTS NO_BEEP
+setopt NO_NOMATCH          # `ls *.xyz` with no match passes the pattern on (bash behaviour) instead of an error
+bindkey -e                 # emacs keys like bash (Ctrl+A, Ctrl+E, Ctrl+R, …)
+
+# --- Mac: Homebrew and LM Studio on the PATH
+if [[ "$OSTYPE" == darwin* ]]; then
+  [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+  [[ -d "$HOME/.lmstudio/bin" ]] && export PATH="$PATH:$HOME/.lmstudio/bin"
+fi
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
+# --- Completion: menu with arrow keys, case-insensitive
+autoload -Uz compinit && compinit -d ~/.zcompdump
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# --- Keys: Up/Down search the history for what is already typed; Ctrl+Left/Right jump words
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search; zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search;   bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search; bindkey '^[OB' down-line-or-beginning-search
+bindkey '^[[1;5C' forward-word; bindkey '^[[1;5D' backward-word
+bindkey '^[[H' beginning-of-line; bindkey '^[[F' end-of-line; bindkey '^[[3~' delete-char
+
+# --- Aliases
+if [[ "$OSTYPE" == darwin* ]]; then alias ls='ls -G'; else alias ls='ls --color=auto'; fi
+alias grep='grep --color=auto'
+command -v btop   >/dev/null && alias top='btop'
+command -v macmon >/dev/null && alias gpu='macmon'
+command -v micro  >/dev/null && alias nano='micro'
+alias sudo='sudo '            # so aliases also work after sudo
+
+# --- Modern tools (only if installed). `ls`, `cat`, `find`, `grep` stay classic, so pasted commands keep working
+if command -v eza >/dev/null; then
+  alias l='eza --group-directories-first' ll='eza -alh --git --group-directories-first' la='eza -a --group-directories-first' lt='eza --tree --level=2 --group-directories-first'
+else
+  alias ll='ls -alF' la='ls -A' l='ls -CF'
+fi
+command -v batcat >/dev/null && alias bat='batcat'          # Debian/Ubuntu name of bat
+command -v fdfind >/dev/null && alias fd='fdfind'           # Debian/Ubuntu name of fd
+if command -v fzf >/dev/null; then
+  _fd=$(command -v fdfind || command -v fd); _bat=$(command -v batcat || command -v bat)
+  [[ -n "$_fd" ]] && export FZF_DEFAULT_COMMAND="$_fd --type f --hidden --exclude .git" FZF_CTRL_T_COMMAND="$_fd --type f --hidden --exclude .git"
+  [[ -n "$_bat" ]] && export FZF_CTRL_T_OPTS="--preview '$_bat --color=always --style=numbers --line-range=:200 {}'"
+  unset _fd _bat
+  source <(fzf --zsh) 2>/dev/null                            # Ctrl+R history, Ctrl+T files, Alt+C folders
+fi
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"   # z <part of a folder name>, zi = pick with fzf
+
+[[ -r ~/.zsh_aliases_from_bash ]] && source ~/.zsh_aliases_from_bash   # servers: aliases copied from ~/.bashrc
+[[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# --- Plugins: Debian/Ubuntu packages or Homebrew
+for _p in /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
+  [[ -r $_p ]] && { source $_p; break; }
+done
+
+# --- Prompt (config: ~/.config/starship.toml, the logo shows the system of each machine)
+if command -v starship >/dev/null; then eval "$(starship init zsh)"; else PROMPT='%n@%m:%~%# '; fi
+
+# --- Syntax highlighting has to be loaded last
+for _p in /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  [[ -r $_p ]] && { source $_p; break; }
+done
+unset _p
