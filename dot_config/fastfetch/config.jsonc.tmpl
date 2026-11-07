@@ -1,3 +1,4 @@
+{{- $server := has .chezmoi.hostname (list "ubuntu" "pie" "immich-pi") -}}
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "logo": {
@@ -90,8 +91,10 @@
       "format": "\u001b[94m┌───────────────────Environment──────────────────────┐",
     },
     { "type": "shell", "key": "│ {#yellow} Shell" },
+{{- if not $server }}
     { "type": "de", "key": "│ ├ DE/WM" },
     { "type": "terminal", "key": "│ └ Terminal" },
+{{- end }}
     {
       "type": "custom",
       "format": "\u001b[94m└────────────────────────────────────────────────────┘",
@@ -114,6 +117,22 @@
     //    },
     //    "break",
 
+{{- if $server }}
+    {
+      "type": "custom",
+      "format": "\u001b[94m┌───────────────────────Server───────────────────────┐",
+    },
+    { "type": "cpu", "key": "│ {#cyan} CPU" },
+    { "type": "memory", "key": "│ ├ Memory" },
+    { "type": "disk", "key": "│ ├󰋊 Disk", "folders": "/" },
+    { "type": "localip", "key": "│ └󰩟 LAN IP", "showIpv6": false },
+    {
+      "type": "custom",
+      "format": "\u001b[94m└────────────────────────────────────────────────────┘",
+    },
+    "break",
+
+{{- else }}
     // ────────────────────── Media Status ──────────────────────
     {
       "type": "custom",
@@ -130,6 +149,7 @@
     },
     "break",
 
+{{- end }}
     // ────────────────────── OS Lifespan ──────────────────────
     {
       "type": "custom",
@@ -147,10 +167,12 @@
     },
     "break",
 
+{{- if not $server }}
     {
       "type": "colors",
       "key": " Palette",
       "symbol": "circle",
     },
+{{- end }}
   ],
 }
