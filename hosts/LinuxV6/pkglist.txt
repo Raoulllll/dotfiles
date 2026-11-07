@@ -57,6 +57,7 @@ cairo-gobject-devel
 calibre
 calls
 cargo
+cbonsai
 chafa
 chezmoi
 chromaprint-tools
@@ -254,7 +255,6 @@ kernel-cachyos-devel
 kernel-cachyos-devel-matched
 kernel-cachyos-modules
 kernel-modules-core
-kernel-modules-extra
 kexec-tools
 keyd
 kf6-baloo-file
@@ -560,6 +560,7 @@ tailscale
 tar
 tcpdump
 teamd
+telegram-desktop
 terra-release
 thermald
 tigervnc

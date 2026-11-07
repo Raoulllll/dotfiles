@@ -10,3 +10,10 @@ disable = [
   "pipx",         # nothing installed
   "tailscale",    # extra sudo prompt, does nothing
 ]
+
+[commands]
+# Safe updates on ubuntu, pie, immich-pi and the Mac (apt, beszel-agent, Ollama, low-risk
+# Docker images, brew formulae). Script lives in the private homelab repo; skipped where it is missing.
+"Homelab servers" = "bash -c 'f=$HOME/homelab-repo/tools/server-update/server-update.sh; [ ! -x \"$f\" ] || \"$f\"'"
+# Dotfiles backup: re-add, commit, pull, apply, push (was here until 2026-11-05)
+"System Configuration Backup" = "$HOME/.local/bin/cz-sync.sh"

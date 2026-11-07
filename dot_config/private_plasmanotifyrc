@@ -31,5 +31,8 @@ Seen=true
 [Applications][org.qbittorrent.qBittorrent]
 Seen=true
 
+[Applications][org.telegram.desktop]
+Seen=true
+
 [Applications][proton-mail]
 Seen=true

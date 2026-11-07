@@ -2,7 +2,7 @@
 
 format = """
 [░▒▓](#a3aed2)\
-$os\
+[  ](bg:#a3aed2 fg:#090c0c)\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -70,18 +70,3 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
-
-
-# The logo comes from the os module: every machine shows its own system (Mac, Fedora, Ubuntu, Debian)
-[os]
-disabled = false
-style = "bg:#a3aed2 fg:#090c0c"
-format = '[ $symbol ]($style)'
-
-[os.symbols]
-Macos = "\uf179"
-Fedora = "\uf30a"
-Ubuntu = "\uf31b"
-Debian = "\uf306"
-Raspbian = "\uf306"
-Arch = "\uf303"
