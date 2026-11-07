@@ -117,3 +117,7 @@ for brew in /home/linuxbrew/.linuxbrew/bin/brew /opt/homebrew/bin/brew
         break
     end
 end
+
+# LM Studio CLI (lms) and Docker Desktop, only where installed (the Mac)
+test -d $HOME/.lmstudio/bin; and fish_add_path -a $HOME/.lmstudio/bin
+test -d $HOME/.docker/bin; and fish_add_path -a $HOME/.docker/bin
