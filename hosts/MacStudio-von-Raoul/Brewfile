@@ -1,0 +1,35 @@
+tap "henrygd/beszel", trusted: true
+tap "lizardbyte/homebrew", "https://github.com/LizardByte/homebrew-homebrew"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# GitHub command-line tool
+brew "gh"
+# Sudoless performance monitoring for Apple Silicon processors
+brew "macmon"
+# Modern and intuitive terminal-based text editor
+brew "micro"
+# Python version management
+brew "pyenv"
+# SMART hard drive monitoring
+brew "smartmontools"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Open source continuous file synchronization application
+brew "syncthing", restart_service: :changed
+# Agent for Beszel, a lightweight server monitoring platform.
+brew "henrygd/beszel/beszel-agent"
+# Self-hosted game stream host for Moonlight
+brew "lizardbyte/homebrew/sunshine", trusted: true
+# Display management tool
+cask "betterdisplay"
+# Virtual Audio Driver
+cask "blackhole-2ch"
+cask "font-jetbrains-mono-nerd-font"
+# GPU-based terminal emulator
+cask "kitty"
