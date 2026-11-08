@@ -76,6 +76,7 @@ containerd.io
 coolercontrol
 coreutils
 cpio
+croc
 crontabs
 cryptsetup
 cups
