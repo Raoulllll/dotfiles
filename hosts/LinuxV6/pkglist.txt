@@ -587,6 +587,7 @@ ultramarine-shell-config
 ultramarine-system-configs-core
 ultramarine-system-configs-desktop
 umcli
+unrar
 unzip
 usb_modeswitch
 usbutils
