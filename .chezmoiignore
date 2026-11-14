@@ -75,6 +75,7 @@ ollama-models.txt
 .config/OpenRGB
 .config/autostart
 .local/bin/steam-gamescope-wrapper
+.config/opencode
 {{ end }}
 
 {{ if $server }}
