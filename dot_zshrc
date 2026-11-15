@@ -67,8 +67,8 @@ command -v zoxide >/dev/null && eval "$(zoxide init zsh)"   # z <part of a folde
 [[ -r ~/.zsh_aliases_from_bash ]] && source ~/.zsh_aliases_from_bash   # servers: aliases copied from ~/.bashrc
 [[ -r ~/.zshrc.local ]] && source ~/.zshrc.local
 
-# --- Plugins: Debian/Ubuntu packages or Homebrew
-for _p in /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
+# --- Plugins: Nix (home-manager, homelab repo nix/), Debian/Ubuntu packages or Homebrew; the first one found wins
+for _p in $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
   [[ -r $_p ]] && { source $_p; break; }
 done
 
@@ -76,7 +76,7 @@ done
 if command -v starship >/dev/null; then eval "$(starship init zsh)"; else PROMPT='%n@%m:%~%# '; fi
 
 # --- Syntax highlighting has to be loaded last
-for _p in /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+for _p in $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
   [[ -r $_p ]] && { source $_p; break; }
 done
 unset _p
