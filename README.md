@@ -8,7 +8,7 @@ Documentation lives in the homelab wiki (`wiki/02 Hardware/main-pc.md`).
 | Path | What it is |
 |---|---|
 | `dot_config/` | `~/.config`: kitty, ghostty, fish, micro, starship, fastfetch, gtk, Kvantum, KDE (kwin, plasma), topgrade |
-| `dot_config/` (more) | zed, btop, fish plugin list (`fish_plugins`, fisher reinstalls the plugins), KDE shortcuts/colours/power, autostart entries, Hyprland + Caelestia (being tried), systemd user timers, `environment.d` (SSH agent socket) |
+| `dot_config/` (more) | zed, btop, fish plugin list (`fish_plugins`, fisher reinstalls the plugins), KDE shortcuts/colours/power, autostart entries, systemd user timers, `environment.d` (SSH agent socket) |
 | `dot_local/bin/` | helper scripts, e.g. `cz-sync.sh` (lists, re-add, commit, push), `fetch-layout`, `steam-gamescope-wrapper` |
 | `dot_gitconfig` | `~/.gitconfig` |
 | `fedorabootstrap.sh` | Fedora setup: RPM Fusion, Copr repos, core packages |
@@ -32,7 +32,7 @@ Changes: edit the file in `$HOME`, then `chezmoi re-add` (or run `cz-sync.sh`), 
 
 `.chezmoiignore` decides it per device:
 - **Everywhere:** git, starship, fastfetch, kitty, ghostty, micro, btop, htop, zed, topgrade, fish (works without eza, brew or the Steam wrapper), `cz-sync.sh`, `fetch-layout`
-- **Linux only:** KDE/Plasma, GTK, Kvantum, Hyprland, Caelestia, PipeWire/WirePlumber, systemd user units, `environment.d`, the other scripts in `~/.local/bin`
+- **Linux only:** KDE/Plasma, GTK, Kvantum, PipeWire/WirePlumber, systemd user units, `environment.d`, the other scripts in `~/.local/bin`
 - **main-pc only:** monitor layout (`kwinoutputconfig.json`), LACT (GPU), OpenRGB, autostart apps, `steam-gamescope-wrapper` (3440x1440 @ 175 Hz)
 - **macOS only:** `.zshrc`
 

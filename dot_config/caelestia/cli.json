@@ -1,7 +1,0 @@
-{
-    "theme": {
-        "enableGtk": false,
-        "enableQt": false,
-        "enableZed": false
-    }
-}

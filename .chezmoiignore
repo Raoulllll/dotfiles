@@ -26,18 +26,16 @@ ollama-models.txt
 {{ end }}
 
 {{ if or (ne .chezmoi.os "linux") $server (eq .chezmoi.hostname "laptop") }}
-# --- Linux desktop only (Fedora, KDE, Hyprland, systemd, PipeWire): not on the Mac, not on the servers, not on the laptop
+# --- Linux desktop only (Fedora, KDE, systemd, PipeWire): not on the Mac, not on the servers, not on the laptop
 #     (Raoul 2026-11-07: the laptop, mostly on Windows, gets only shell, terminal and tools; its KDE, audio and power stay its own) ---
 .config/Kvantum
 .config/autostart
 .config/brave-flags.conf
-.config/caelestia
 .config/dolphinrc
 .config/environment.d
 .config/fontconfig
 .config/gtk-3.0
 .config/gtk-4.0
-.config/hypr
 .config/kcminputrc
 .config/kdeglobals
 .config/kglobalshortcutsrc
