@@ -64,6 +64,7 @@ chromaprint-tools
 chrony
 cifs-utils
 cirrus-audio-firmware
+clang
 clang21-libs
 clang21-resource-filesystem
 cmake
@@ -167,6 +168,7 @@ git
 glib2-devel
 glibc
 glibc-all-langpacks
+glslang
 gnome-calculator
 gnome-connections
 gnome-keyring
@@ -314,8 +316,12 @@ libva-intel-media-driver
 libva-utils
 libX11-devel
 libxcrypt-compat
+libXcursor-devel
+libXi-devel
+libXtst-devel
 linux-firmware
 livesys-scripts
+lld
 llvm21-filesystem
 llvm21-libs
 lm_sensors
@@ -540,6 +546,7 @@ speech-dispatcher-espeak-ng
 speedtest
 spice-vdagent
 spice-webdavd
+spirv-tools
 sqlite
 sssd-common
 sssd-kcm
