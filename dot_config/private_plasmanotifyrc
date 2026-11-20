@@ -42,3 +42,6 @@ Seen=true
 
 [Applications][waydroid.com.android.vending]
 Seen=true
+
+[DoNotDisturb]
+NotificationSoundsMuted=true
