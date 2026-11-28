@@ -1,6 +1,5 @@
 ai.lmstudio.lm-studio
 ca.littlesvr.asunder
-ch.threema.threema-desktop
 com.bambulab.BambuStudio
 com.github.IsmaelMartinez.teams_for_linux
 com.github.jeromerobert.pdfarranger
@@ -24,6 +23,7 @@ com.usebottles.bottles
 com.vysp3r.ProtonPlus
 de.haeckerfelix.Shortwave
 de.swsnr.turnon
+dev.eden_emu.eden
 dev.vencord.Vesktop
 eu.codepoems.xl-converter
 info.febvre.Komikku
